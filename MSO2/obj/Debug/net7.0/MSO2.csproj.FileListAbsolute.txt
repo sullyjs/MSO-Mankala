@@ -1,0 +1,4 @@
+/Users/leila/Documents/GitHub/MSO-Mankala/MSO2/obj/Debug/net7.0/MSO2.GeneratedMSBuildEditorConfig.editorconfig
+/Users/leila/Documents/GitHub/MSO-Mankala/MSO2/obj/Debug/net7.0/MSO2.AssemblyInfoInputs.cache
+/Users/leila/Documents/GitHub/MSO-Mankala/MSO2/obj/Debug/net7.0/MSO2.AssemblyInfo.cs
+/Users/leila/Documents/GitHub/MSO-Mankala/MSO2/obj/Debug/net7.0/MSO2.csproj.CoreCompileInputs.cache
