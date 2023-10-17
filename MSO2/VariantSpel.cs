@@ -3,7 +3,10 @@ namespace MSO2
 {
 	public class VariantSpel
 	{
-		public VariantSpel()
+
+        private VariantBord bord;
+
+        public VariantSpel()
 		{
 		}
 	}
