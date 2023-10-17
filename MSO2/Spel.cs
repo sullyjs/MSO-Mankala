@@ -1,10 +1,12 @@
 ﻿using System;
 namespace MSO2
 {
-    public class Spel
+    abstract public class Spel
     {
         bool player1Empty;
         bool player2Empty;
+
+        public abstract void Play();
 
         public Spel()
         {

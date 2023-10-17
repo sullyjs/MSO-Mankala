@@ -29,7 +29,7 @@ namespace MSO2
                 return _instance;
         }
 
-        //maybe add bool to see who's turn it is?? -- add reference
+        //maybe add bool to see who's turn it is?? -- add reference or use currentplayer
         private void IfKeyPressed(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
