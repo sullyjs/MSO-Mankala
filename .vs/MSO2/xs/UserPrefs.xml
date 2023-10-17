@@ -1,20 +1,39 @@
 ﻿<Properties StartupConfiguration="{0E1AF4EF-B535-4C80-A679-ACDA162C69D9}|Default">
   <MonoDevelop.Ide.ItemProperties.MSO2 PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.MankalaTest FirstBuild="True" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="MankalaTest/KuiltjeTest.cs">
+    <Files>
+      <File FileName="MSO2/Spelbord.cs" Line="24" Column="2" />
+      <File FileName="MSO2/Kuiltje.cs" Line="4" Column="22" />
+      <File FileName="MSO2/ThuisKuiltje.cs" Line="6" Column="61" />
+      <File FileName="MSO2/GameWorld.cs" Line="1" Column="1" />
+      <File FileName="MankalaTest/UnitTest1.cs" Line="16" Column="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="MSO2" expanded="True">
-            <Node name="MSO2" expanded="True" selected="True" />
+            <Node name="MankalaTest">
+              <Node name="Dependencies" expanded="True" />
+              <Node name="KuiltjeTest.cs" selected="True" />
+            </Node>
+            <Node name="MSO2" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="MSO2" expanded="True">
+            <Node name="MankalaTest" expanded="True" selected="True" />
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
 </Properties>
