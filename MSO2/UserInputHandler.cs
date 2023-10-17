@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Reflection;
-using System.Windows.Forms;
+//using System.Windows.Forms;
 
 namespace MSO2
 {
@@ -30,7 +30,7 @@ namespace MSO2
         }
 
         //maybe add bool to see who's turn it is?? -- add reference or use currentplayer
-        private void IfKeyPressed(object sender, KeyEventArgs e)
+        /*private void IfKeyPressed(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -40,7 +40,7 @@ namespace MSO2
             {
                 HandleUserInput();
             }
-        }
+        }*/
 
         private void HandleUserInput()
         {
