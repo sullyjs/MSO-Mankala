@@ -5,15 +5,81 @@ namespace MSO2
     {
 
         private MankalaBord bord;
-        private int currentPlayer;
+        private int HuidigeSpeler;
 
         public MankalaSpel()
         {
+            HuidigeSpeler = 1;
         }
 
-        public override void Play()
+        public override void Speel()
         {
+
+            Strooien();
+            Zet();
         }
+
+
+
+        //override other functies
+
+        public override void Strooien()
+        {
+            Console.WriteLine("Strooien");
+            //for(int i = 0; i < bor)
+
+            //hou de kuiltjes bij, player can choose welk van zijn kuiltjes, en dan vanaf daar
+            //for loop, steentjes van al dat kuiltje -> naar nul, en dan + 1 steentjes voor elk kuiltje + 1
+            
+            
+        }
+
+        protected override void Zet()
+        {
+            Console.WriteLine("HuidigeSpeler: Ik doe een zet");
+            if (HuidigeSpeler == 1)
+            {
+                HuidigeSpeler = 2;
+            }
+            else
+            {
+                HuidigeSpeler = 1;
+            }
+
+        }
+
+        protected override bool NogEenZet()
+        {
+            if (true) {
+                Console.WriteLine("Ik doe nog een zet");
+                return true;
+
+            }
+
+            else
+            {
+                Console.WriteLine("Nope");
+                return false;
+            } 
+        }
+
+        protected override bool IsGameOver()
+        {
+            if (true)
+            {
+                return true;
+            } //de gameoerlgica is waar
+            else
+            {
+                return false;
+            }
+        }
+
+        protected override void DeterMineWinner()
+        {
+            Console.WriteLine("Ik heb gewonnen"); //zet hier de logica van de winnaar, gebruik thuiskuiltje of alle kuiltjes
+        }
+
     }
 }
 

@@ -3,20 +3,25 @@ namespace MSO2
 {
     abstract public class Spel
     {
-        bool player1Empty;
-        bool player2Empty;
-
-        public abstract void Play();
 
         public Spel()
         {
 
         }
 
-        //private bool IsGameOver()
-        //{
+        public abstract void Speel();
 
-        // }
+        public abstract void Strooien();
+
+        protected abstract void Zet();
+
+        protected abstract bool NogEenZet();
+
+        protected abstract bool IsGameOver();
+
+        protected abstract void DeterMineWinner();
+
+
     }
 }
 

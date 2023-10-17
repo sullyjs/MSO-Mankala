@@ -1,10 +1,15 @@
 ﻿using System;
 namespace MSO2
 {
-	public class MankalaBord
+	public class MankalaBord : Spelbord
 	{
-		public MankalaBord()
+
+        int aantalKuiltjes = 6;
+        int steentjes = 4
+			;
+        public MankalaBord(int aantalKuiltjesPerSpeler, int steentjesPerKuiltje)
 		{
+
 		}
 	}
 }
