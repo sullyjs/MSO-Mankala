@@ -71,7 +71,20 @@ namespace MSO2
 
         protected override void DeterMineWinner()
         {
-            Console.WriteLine("Ik heb gewonnen"); //zet hier de logica van de winnaar, gebruik thuiskuiltje of alle kuiltjes
+            int winnaar = bord.Winnaar();
+
+            if (winnaar == 0)
+            {
+                Console.WriteLine("gelijkspel");
+            }
+            else if (winnaar == 1)
+            {
+                Console.WriteLine("Speler 1 heeft gewonnen");
+            }
+            else
+            {
+                Console.WriteLine("Speler 2 heeft gewonnen");
+            }
         }
 
     }
