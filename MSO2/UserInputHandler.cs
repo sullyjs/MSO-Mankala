@@ -93,7 +93,7 @@ namespace MSO2
                 gekozenKuiltje = 6;
             }
 
-            
+
         }
 
     }

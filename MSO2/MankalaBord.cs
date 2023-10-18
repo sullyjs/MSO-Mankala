@@ -3,8 +3,8 @@ namespace MSO2
 {
     public class MankalaBord : Spelbord
     {
-        Kuiltje thuiskuiltjeSpeler1;
-        Kuiltje thuiskuiltjeSpeler2;
+        public Kuiltje thuiskuiltjeSpeler1;
+        public Kuiltje thuiskuiltjeSpeler2;
 
         //int aantalKuiltjes = 6;
         //int steentjes = 4;
