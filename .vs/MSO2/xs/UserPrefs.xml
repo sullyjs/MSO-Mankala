@@ -1,33 +1,31 @@
 ﻿<Properties StartupConfiguration="{0E1AF4EF-B535-4C80-A679-ACDA162C69D9}|Default">
   <MonoDevelop.Ide.ItemProperties.MSO2 PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.ItemProperties.TestMankala FirstBuild="True" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.MankalaTest FirstBuild="True" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MSO2/Spel.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TestMankala/UnitTest1.cs">
     <Files>
       <File FileName="MSO2/Spelbord.cs" Line="27" Column="4" />
-      <File FileName="MSO2/MankalaBord.cs" Line="12" Column="1" />
+      <File FileName="MSO2/MankalaBord.cs" Line="17" Column="3" />
       <File FileName="MSO2/Kuiltje.cs" Line="37" Column="29" />
       <File FileName="MSO2/GameWorld.cs" />
       <File FileName="MSO2/Spel.cs" Line="1" Column="1" />
+      <File FileName="MSO2/MankalaSpel.cs" Line="66" Column="44" />
+      <File FileName="TestMankala/UnitTest1.cs" Line="8" Column="25" />
+      <File FileName="MSO2/UserInputHandler.cs" Line="39" Column="41" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="MSO2">
-            <Node name="MankalaTest" expanded="True" />
-            <Node name="MSO2">
-              <Node name="Spel.cs" selected="True" />
+          <Node name="MSO2" expanded="True">
+            <Node name="MSO2" expanded="True" />
+            <Node name="TestMankala" expanded="True">
+              <Node name="UnitTest1.cs" selected="True" />
             </Node>
           </Node>
         </State>
       </Pad>
       <Pad Id="MonoDevelop.UnitTesting.TestPad">
-        <State name="__root__">
-          <Node name="MSO2" expanded="True">
-            <Node name="MankalaTest" expanded="True" selected="True" />
-          </Node>
-        </State>
+        <State name="__root__" />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
