@@ -19,20 +19,26 @@ namespace MSO2
 
         public override void Strooien()
         {
+            if (HuidigeSpeler == 2)
+            {
+                gekozenKuiltje += 6; // gekozenKuiltje voor speler 2
+            }
+
+            Console.WriteLine("Gekozen kuiltje:" + gekozenKuiltje);
             if ( (HuidigeSpeler == 1 && (gekozenKuiltje < 1 || gekozenKuiltje > 6)) || (HuidigeSpeler == 2 && (gekozenKuiltje < 7 || gekozenKuiltje > 12)) )
             {
                 Console.WriteLine("Invalid move. Choose a valid kuiltje.");
-                return; // Exit the method to prevent an invalid move
+                return;
             }
 
-            int kuiltjeIndex = (gekozenKuiltje == 0) ? 11 : gekozenKuiltje - 1; // Convert gekozenKuiltje (0 and 1-12) to array index (11 and 0-10)
-            int aantalStenen = bord.kuiltjesSpeler1[kuiltjeIndex].NeemStenen(); // Take out all stones from gekozenKuiltje
+            int kuiltjeIndex = (gekozenKuiltje == 0) ? 11 : gekozenKuiltje - 1;
+            int aantalStenen = bord.kuiltjesSpeler1[kuiltjeIndex].NeemStenen(); //fix here!!!!!
             int speler = (HuidigeSpeler == 1) ? 1 : 2;
             int huidigeKuiltjeIndex = kuiltjeIndex;
 
             while (aantalStenen > 0)
             {
-                huidigeKuiltjeIndex = (huidigeKuiltjeIndex + 1) % 12; // Move counter-clockwise
+                huidigeKuiltjeIndex = (huidigeKuiltjeIndex + 1) % 12; //counter-clockwise
                 if ((speler == 1 && huidigeKuiltjeIndex != 6) || (speler == 2 && huidigeKuiltjeIndex != 0))
                 {
                     bord.kuiltjesSpeler1[huidigeKuiltjeIndex].VoegSteenToe(1);
@@ -40,7 +46,7 @@ namespace MSO2
                 }
             }
 
-            // Check if the last stone landed in an empty kuiltje on the player's side
+            //check if the last stone landed in an empty kuiltje
             if (speler == 1 && huidigeKuiltjeIndex < 6 && bord.kuiltjesSpeler1[huidigeKuiltjeIndex].GetSteenAantal() == 1)
             {
                 int tegenovergesteldeIndex = 11 - huidigeKuiltjeIndex;
@@ -59,8 +65,8 @@ namespace MSO2
                 Console.WriteLine($"Kuiltje {i + 1} (Speler 1): {bord.kuiltjesSpeler1[i].GetSteenAantal()}");
                 Console.WriteLine($"Kuiltje {i + 7} (Speler 2): {bord.kuiltjesSpeler2[i].GetSteenAantal()}");
             }
-            Console.WriteLine("Thuiskuiltje Speler 1: " + bord.thuiskuiltjeSpeler1.GetSteenAantal());
-            Console.WriteLine("Thuiskuiltje Speler 2: " + bord.thuiskuiltjeSpeler2.GetSteenAantal());
+            Console.WriteLine("Thuiskuiltje Speler 1: " + bord.thuiskuiltjeSpeler1.GetSteenAantal()); //0 
+            Console.WriteLine("Thuiskuiltje Speler 2: " + bord.thuiskuiltjeSpeler2.GetSteenAantal()); // 13
         }
 
         protected override void Zet()
