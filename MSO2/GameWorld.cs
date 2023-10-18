@@ -3,26 +3,47 @@ namespace MSO2
 {
     class GameWorld
     {
-        private GameWorld()
+
+        Spel mankalaspel = new MankalaSpel();
+        UserInputHandler inputHandler = UserInputHandler.GetInstance();
+        bool gameActive = true;
+
+        protected GameWorld()
         {
-            Spel mankalaspel;
-            UserInputHandler inputhandler = UserInputHandler.GetInstance();
 
         }
 
         public void RunGame()
         {
-            bool gameActive = true;
+
+            //Console.WriteLine("Welcome to a new game of mankala: choose A to play classic mankala, and B for a variant.");
+            Console.WriteLine("You've created a new game of Mankala! It is player 1's turn, choose which of your holes you wanna use, by clicking a number 1-6.");
+            Console.WriteLine("Voor speler 1 zal de gekozen nummer 1 tot 6 worden gebruikt. Voor speler 2 ook, maar moet dit worden gezien als 1 is 7, 2 is 8, 3 is 9.. etc.");
 
             while (gameActive)
             {
-                //if (isgameover) -- determine winner, gameactive is false
-                //otherwise, play mankalagame
-                //choose what game to play with input handler?
+
+                inputHandler.IfKeyPressed();
+                int gekozenKuiltje = inputHandler.GekozenKuiltje;
+
+                if (gekozenKuiltje != -1)
+                {
+                    mankalaspel.gekozenKuiltje = gekozenKuiltje;
+
+                    mankalaspel.Speel();
+
+                    if (mankalaspel.IsGameOver())
+                    {
+                        mankalaspel.DeterMineWinner();
+                        gameActive = false;
+                        Console.WriteLine("Game Over!");
+                    }
+
+                }
+                
+
+             }
             }
-            //run mankala game version or sth
-            
-        }
 
         public static void Main()
         {

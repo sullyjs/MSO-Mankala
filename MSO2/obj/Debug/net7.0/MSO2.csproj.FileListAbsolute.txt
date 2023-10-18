@@ -2,3 +2,17 @@
 /Users/leila/Documents/GitHub/MSO-Mankala/MSO2/obj/Debug/net7.0/MSO2.AssemblyInfoInputs.cache
 /Users/leila/Documents/GitHub/MSO-Mankala/MSO2/obj/Debug/net7.0/MSO2.AssemblyInfo.cs
 /Users/leila/Documents/GitHub/MSO-Mankala/MSO2/obj/Debug/net7.0/MSO2.csproj.CoreCompileInputs.cache
+C:\Users\goeve\OneDrive\Documenten\GitHub\INFOBIV MAin\MSO-Mankala\MSO2\bin\Debug\net7.0\MSO2.exe
+C:\Users\goeve\OneDrive\Documenten\GitHub\INFOBIV MAin\MSO-Mankala\MSO2\bin\Debug\net7.0\MSO2.deps.json
+C:\Users\goeve\OneDrive\Documenten\GitHub\INFOBIV MAin\MSO-Mankala\MSO2\bin\Debug\net7.0\MSO2.runtimeconfig.json
+C:\Users\goeve\OneDrive\Documenten\GitHub\INFOBIV MAin\MSO-Mankala\MSO2\bin\Debug\net7.0\MSO2.dll
+C:\Users\goeve\OneDrive\Documenten\GitHub\INFOBIV MAin\MSO-Mankala\MSO2\bin\Debug\net7.0\MSO2.pdb
+C:\Users\goeve\OneDrive\Documenten\GitHub\INFOBIV MAin\MSO-Mankala\MSO2\obj\Debug\net7.0\MSO2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\goeve\OneDrive\Documenten\GitHub\INFOBIV MAin\MSO-Mankala\MSO2\obj\Debug\net7.0\MSO2.AssemblyInfoInputs.cache
+C:\Users\goeve\OneDrive\Documenten\GitHub\INFOBIV MAin\MSO-Mankala\MSO2\obj\Debug\net7.0\MSO2.AssemblyInfo.cs
+C:\Users\goeve\OneDrive\Documenten\GitHub\INFOBIV MAin\MSO-Mankala\MSO2\obj\Debug\net7.0\MSO2.csproj.CoreCompileInputs.cache
+C:\Users\goeve\OneDrive\Documenten\GitHub\INFOBIV MAin\MSO-Mankala\MSO2\obj\Debug\net7.0\MSO2.dll
+C:\Users\goeve\OneDrive\Documenten\GitHub\INFOBIV MAin\MSO-Mankala\MSO2\obj\Debug\net7.0\refint\MSO2.dll
+C:\Users\goeve\OneDrive\Documenten\GitHub\INFOBIV MAin\MSO-Mankala\MSO2\obj\Debug\net7.0\MSO2.pdb
+C:\Users\goeve\OneDrive\Documenten\GitHub\INFOBIV MAin\MSO-Mankala\MSO2\obj\Debug\net7.0\MSO2.genruntimeconfig.cache
+C:\Users\goeve\OneDrive\Documenten\GitHub\INFOBIV MAin\MSO-Mankala\MSO2\obj\Debug\net7.0\ref\MSO2.dll
