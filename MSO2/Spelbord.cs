@@ -3,16 +3,11 @@ namespace MSO2
 {
 	public class Spelbord
 	{
-		Kuiltje[] kuiltjesSpeler1;
-		Kuiltje[] kuiltjesSpeler2;
-		int aantalKuiltjes;
-		int steentjes;
-
+		private protected Kuiltje[] kuiltjesSpeler1;
+		private protected Kuiltje[] kuiltjesSpeler2;
 
         public Spelbord(int aantalKuiltjesPerSpeler, int steentjesPerKuiltje)
 		{
-			aantalKuiltjes = aantalKuiltjesPerSpeler;
-			steentjes = steentjesPerKuiltje;
             kuiltjesSpeler1 = new Kuiltje[aantalKuiltjesPerSpeler];
 			kuiltjesSpeler2 = new Kuiltje[aantalKuiltjesPerSpeler];
 

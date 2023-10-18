@@ -10,6 +10,7 @@ namespace MSO2
         public MankalaSpel()
         {
             HuidigeSpeler = 1;
+            bord = new MankalaBord();
         }
 
         public override void Speel()
@@ -65,14 +66,7 @@ namespace MSO2
 
         protected override bool IsGameOver()
         {
-            if (true)
-            {
-                return true;
-            } //de gameoerlgica is waar
-            else
-            {
-                return false;
-            }
+            return bord.CheckAlleKuiltjesLeeg();
         }
 
         protected override void DeterMineWinner()
