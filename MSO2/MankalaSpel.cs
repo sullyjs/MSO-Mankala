@@ -21,11 +21,11 @@ namespace MSO2
         public override void Strooien()
         {
             Kuiltje[] huidigeKuiltje = bord.kuiltjesSpeler1;
-            Kuiltje thuisKuiltje = bord.thuiskuiltjeSpeler1;
 
             if (HuidigeSpeler == 1)
             {
-                if (gekozenKuiltje < 1 || gekozenKuiltje > 6 || gekozenKuiltje == 7 || bord.kuiltjesSpeler1[gekozenKuiltje - 1].CheckLeeg())
+                Console.WriteLine("\nGekozen kuiltje:" + gekozenKuiltje);
+                if (gekozenKuiltje < 1 || gekozenKuiltje > 6 || gekozenKuiltje == 7 || bord.kuiltjesSpeler1[gekozenKuiltje - 1].CheckLeeg() )
                 {
                     Console.WriteLine("Ongeldige keuze. Kies een ander kuiltje.");
                     return;
@@ -33,48 +33,56 @@ namespace MSO2
             }
             else if (HuidigeSpeler == 2)
             {
+                Console.WriteLine("\nGekozen kuiltje:" + (gekozenKuiltje + 7));
                 huidigeKuiltje = bord.kuiltjesSpeler2;
-                thuisKuiltje = bord.thuiskuiltjeSpeler2;
-                gekozenKuiltje += 7;
-                if (gekozenKuiltje < 8 || gekozenKuiltje > 13 || gekozenKuiltje == 0 || bord.kuiltjesSpeler2[gekozenKuiltje - 8].CheckLeeg())
-                {
-                    Console.WriteLine("Ongeldige keuze. Kies een ander kuiltje.");
-                    return;
-                }
             }
 
-            Console.WriteLine("\nGekozen kuiltje:" + gekozenKuiltje);
-            int stenenInHand = huidigeKuiltje[gekozenKuiltje - 1].NeemStenen(); // Neem stenen uit het geselecteerde kuiltje
+            int stenenInHand = huidigeKuiltje[gekozenKuiltje - 1].NeemStenen();
+            int kuiltjes = gekozenKuiltje;
 
-            for (int i = 1; i <= stenenInHand; i++)
+            for (int i = 0; i < stenenInHand; i++)
             {
-                int huidigeKuiltjeIndex = (gekozenKuiltje + i) % 14; // Circular index voor 14 kuiltjes
-                if (huidigeKuiltjeIndex == 0)
-                {
-                    // bij thuiskuiltje player 1
-                    if (HuidigeSpeler == 1) { thuisKuiltje.VoegSteenToe(1); } else continue;
-                }
-                else if (huidigeKuiltjeIndex == 7)
+                kuiltjes++;
+
+                if (kuiltjes == 0 && HuidigeSpeler == 2)
                 {
                     // bij thuiskuiltje player 2
-                    if (HuidigeSpeler == 2) { thuisKuiltje.VoegSteenToe(1); } else continue;
+                    bord.thuiskuiltjeSpeler2.VoegSteenToe();
+                }
+                else if (kuiltjes == 7) {
+
+                    if (HuidigeSpeler == 1)
+                    {
+                        // bij thuiskuiltje player 1
+                        bord.thuiskuiltjeSpeler1.VoegSteenToe();
+                        huidigeKuiltje = bord.kuiltjesSpeler2;
+                    }
+                    if (HuidigeSpeler == 2)
+                    {
+                        // bij thuiskuiltje player 1
+                        bord.thuiskuiltjeSpeler2.VoegSteenToe();
+                        huidigeKuiltje = bord.kuiltjesSpeler1;
+                    }
+                    kuiltjes = 0;
                 }
                 else
                 {
-                    // anders voeg steentje toe
-                    huidigeKuiltje[huidigeKuiltjeIndex - 1].VoegSteenToe(1);
+                    // anders voeg een steentje toe
+                    huidigeKuiltje[kuiltjes - 1].VoegSteenToe(1);
                 }
             }
 
             for (int i = 0; i < 6; i++) // Status van elke kuiltje nadat steentjes zijn gestrooid
             {
                 Console.WriteLine($"Kuiltje {i + 1} (Speler 1): {bord.kuiltjesSpeler1[i].GetSteenAantal()}");
+            }
+            for (int i = 0; i < 6; i++) // Status van elke kuiltje nadat steentjes zijn gestrooid
+            {
                 Console.WriteLine($"Kuiltje {i + 8} (Speler 2): {bord.kuiltjesSpeler2[i].GetSteenAantal()}");
             }
             Console.WriteLine("Thuiskuiltje Speler 1: " + bord.thuiskuiltjeSpeler1.GetSteenAantal());
-            Console.WriteLine("Thuiskuiltje Speler 2: " + bord.thuiskuiltjeSpeler2.GetSteenAantal()); 
+            Console.WriteLine("Thuiskuiltje Speler 2: " + bord.thuiskuiltjeSpeler2.GetSteenAantal());
         }
-
 
         protected override void Zet()
         {
