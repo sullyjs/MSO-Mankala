@@ -73,7 +73,6 @@ namespace MSO2
                 gekozenKuiltje = 6;
             }
 
-
         }
 
         public int ChooseGame()
@@ -91,7 +90,7 @@ namespace MSO2
             {
                 return 2;
             }
-            else return 1;
+            else return 0;
         }
 
     }
