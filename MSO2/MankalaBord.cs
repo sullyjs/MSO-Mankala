@@ -6,10 +6,10 @@ namespace MSO2
         public Kuiltje thuiskuiltjeSpeler1;
         public Kuiltje thuiskuiltjeSpeler2;
 
-        //int aantalKuiltjes = 6;
-        //int steentjes = 4;
+        const int aantalKuiltjes = 6;
+        const int steentjes = 4;
 
-        public MankalaBord() : base(6, 4)
+        public MankalaBord() : base(aantalKuiltjes, steentjes)
         {
             thuiskuiltjeSpeler1 = new Kuiltje(0);
             thuiskuiltjeSpeler2 = new Kuiltje(0);
@@ -19,12 +19,7 @@ namespace MSO2
         {
             for (int i = 0; i < 6; i++)
             {
-                if (!kuiltjesSpeler1[i].CheckLeeg())
-                {
-                    return false;
-                }
-
-                if (!kuiltjesSpeler1[i].CheckLeeg())
+                if (!kuiltjesSpeler1[i].CheckLeeg() || !kuiltjesSpeler2[i].CheckLeeg())
                 {
                     return false;
                 }
