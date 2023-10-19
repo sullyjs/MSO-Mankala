@@ -10,7 +10,7 @@ public class TestKuiltje
         Kuiltje k = new Kuiltje(5);
         Kuiltje kResultaat = new Kuiltje(7);
 
-        k.SteentjesVeranderen(2);
+        k.VoegSteenToe(2);
         
         Assert.Equal(kResultaat.Steentjes, k.Steentjes);
     }
@@ -21,7 +21,7 @@ public class TestKuiltje
         Kuiltje k = new Kuiltje(7);
         Kuiltje kResultaat = new Kuiltje(5);
 
-        k.SteentjesVeranderen(-2);
+        k.VoegSteenToe(-2);
 
         Assert.Equal(kResultaat.Steentjes, k.Steentjes);
     }

@@ -20,5 +20,18 @@ namespace MSO2
                 kuiltjesSpeler2[i] = k2;
             }
         }
+
+        public bool CheckAlleKuiltjesLeeg()
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                if (!kuiltjesSpeler1[i].CheckLeeg() || !kuiltjesSpeler2[i].CheckLeeg())
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 }
