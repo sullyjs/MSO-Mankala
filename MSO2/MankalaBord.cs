@@ -20,12 +20,7 @@ namespace MSO2
 		{
 			for (int i = 0; i < 6; i++)
 			{
-				if (!kuiltjesSpeler1[i].CheckLeeg())
-				{
-					return false;
-				}
-
-				if (!kuiltjesSpeler2[i].CheckLeeg())
+				if (!kuiltjesSpeler1[i].CheckLeeg() || !kuiltjesSpeler2[i].CheckLeeg())
 				{
 					return false;
 				}
