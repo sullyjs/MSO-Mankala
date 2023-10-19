@@ -29,12 +29,31 @@ namespace MSO2
             Steentjes = steentjes;
 		}
 
-		public bool CheckLeeg()
+        public int NeemStenen()
+        {
+            int steentjesInKuiltje = Steentjes;
+            Steentjes = 0; //Leeg het kuiltje van stenen
+            return steentjesInKuiltje;
+        }
+
+        public void VoegSteenToe(int voegSteentjeToe = 1)
+        {
+            Steentjes += voegSteentjeToe;
+        }
+
+        public int GetSteenAantal()
+        {
+            return Steentjes;
+        }
+
+        public bool CheckLeeg()
 		{
 			return Steentjes == 0;
 		}
 
-		public void SteentjesVeranderen(int veranderen)
+
+
+        public void SteentjesVeranderen(int veranderen)
 		{
 			Steentjes += veranderen;
 		}

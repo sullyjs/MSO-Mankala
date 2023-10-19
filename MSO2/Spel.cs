@@ -3,6 +3,7 @@ namespace MSO2
 {
     abstract public class Spel
     {
+        public int gekozenKuiltje;
 
         public Spel()
         {
@@ -17,9 +18,9 @@ namespace MSO2
 
         protected abstract bool NogEenZet();
 
-        protected abstract bool IsGameOver();
+        internal abstract bool IsGameOver();
 
-        protected abstract void DeterMineWinner();
+        internal abstract void DeterMineWinner();
 
 
     }
