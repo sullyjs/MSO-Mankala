@@ -43,27 +43,7 @@ namespace MSO2
         {
             keyInfo = Console.ReadKey();
             HandleUserInput();
-
-            //  if (keyInfo.Key == ConsoleKey.A)
-            //   {
-            //        mankala = new MankalaSpel();
-
-            //       Console.WriteLine("You've created a new game of Mankala! It is player 1's turn, choose which of your holes you wanna use, by clicking a number 1-6.");
-
-            //       HandleUserInput();
-
-            //   }
-
-            if (mankala is VariantSpel)
-            {
-                Console.WriteLine("this is a variant game mode that isn't implemented yet.");
-            }
         }
-
-          //  } else if (mankala is null)
-         //   {
-       //         Console.WriteLine("Wtf you doin");
-       //     }
         
 
         public void HandleUserInput()
@@ -94,6 +74,24 @@ namespace MSO2
             }
 
 
+        }
+
+        public int ChooseGame()
+        {
+
+            keyInfo = Console.ReadKey();
+
+            if (keyInfo.Key == ConsoleKey.A)
+            {
+                mankala = new MankalaSpel();
+
+                return 1;
+            }
+            else if (keyInfo.Key == ConsoleKey.B)
+            {
+                return 2;
+            }
+            else return 1;
         }
 
     }
