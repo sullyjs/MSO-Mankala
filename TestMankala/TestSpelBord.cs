@@ -2,14 +2,14 @@
 
 using MSO2;
 
-public class TestMankalaBord
+public class TestSpelBord
 {
     [Fact]
     public void AlleKuiltjesLeegFalse()
     {
-        MankalaBord mb = new MankalaBord();
+        Spelbord sb = new Spelbord(6, 4);
 
-        bool resultaat = mb.CheckAlleKuiltjesLeeg();
+        bool resultaat = sb.CheckAlleKuiltjesLeeg();
 
         Assert.False(resultaat);
     }
@@ -17,9 +17,9 @@ public class TestMankalaBord
     [Fact]
     public void AlleKuiltjesLeegTrue()
     {
-        Spelbord mb = new Spelbord(6, 0);
+        Spelbord sb = new Spelbord(6, 0);
 
-        bool resultaat = mb.CheckAlleKuiltjesLeeg();
+        bool resultaat = sb.CheckAlleKuiltjesLeeg();
 
         Assert.True(resultaat);
     }
