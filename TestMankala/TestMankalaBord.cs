@@ -14,16 +14,14 @@ public class TestMankalaBord
         Assert.False(resultaat);
     }
 
-    /*[Fact]
+    [Fact]
     public void AlleKuiltjesLeegTrue()
     {
-        MankalaBord mb = new MankalaBord();
-
-        //mb.
+        Spelbord mb = new Spelbord(6, 0);
 
         bool resultaat = mb.CheckAlleKuiltjesLeeg();
 
-        Assert.False(resultaat);
-    }*/
+        Assert.True(resultaat);
+    }
 }
 
