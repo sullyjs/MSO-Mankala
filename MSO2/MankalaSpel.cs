@@ -42,7 +42,7 @@ namespace MSO2
                 }
             }
 
-            Console.WriteLine("Gekozen kuiltje:" + gekozenKuiltje);
+            Console.WriteLine("\nGekozen kuiltje:" + gekozenKuiltje);
             int stenenInHand = huidigeKuiltje[gekozenKuiltje - 1].NeemStenen(); // Neem stenen uit het geselecteerde kuiltje
 
             for (int i = 1; i <= stenenInHand; i++)
@@ -77,7 +77,7 @@ namespace MSO2
 
         protected override void Zet()
         {
-            Console.WriteLine("HuidigeSpeler " + HuidigeSpeler + " doet een zet.");
+            Console.WriteLine("\nHuidigeSpeler " + HuidigeSpeler + " doet een zet.");
             if (HuidigeSpeler == 1)
             {
                 Strooien();
