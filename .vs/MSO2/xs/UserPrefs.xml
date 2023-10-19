@@ -2,30 +2,42 @@
   <MonoDevelop.Ide.ItemProperties.MSO2 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.MankalaTest FirstBuild="True" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="TestMankala/UnitTest1.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TestMankala/TestMankalaBord.cs">
     <Files>
-      <File FileName="MSO2/Spelbord.cs" Line="27" Column="4" />
-      <File FileName="MSO2/MankalaBord.cs" Line="17" Column="3" />
-      <File FileName="MSO2/Kuiltje.cs" Line="37" Column="29" />
-      <File FileName="MSO2/GameWorld.cs" />
-      <File FileName="MSO2/Spel.cs" Line="1" Column="1" />
-      <File FileName="MSO2/MankalaSpel.cs" Line="66" Column="44" />
-      <File FileName="TestMankala/UnitTest1.cs" Line="8" Column="25" />
+      <File FileName="MSO2/Spelbord.cs" Line="7" Column="47" />
+      <File FileName="MSO2/MankalaBord.cs" Line="48" Column="5" />
+      <File FileName="MSO2/GameWorld.cs" Line="33" Column="6" />
+      <File FileName="MSO2/MankalaSpel.cs" Line="73" Column="10" />
+      <File FileName="TestMankala/UnitTest1.cs" Line="3" Column="12" />
       <File FileName="MSO2/UserInputHandler.cs" Line="39" Column="41" />
+      <File FileName="TestMankala/EmptyClass.cs" Line="22" Column="14" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="MSO2" expanded="True">
-            <Node name="MSO2" expanded="True" />
+          <Node name="MSO2">
             <Node name="TestMankala" expanded="True">
-              <Node name="UnitTest1.cs" selected="True" />
+              <Node name="TestMankalaBord.cs" selected="True" />
             </Node>
           </Node>
         </State>
       </Pad>
       <Pad Id="MonoDevelop.UnitTesting.TestPad">
-        <State name="__root__" />
+        <State name="__root__">
+          <Node name="MSO2">
+            <Node name="TestMankala" expanded="True">
+              <Node name="TestMankala" expanded="True">
+                <Node name="TestKuiltje" expanded="True" />
+                <Node name="TestMankalaBord">
+                  <Node name="AlleKuiltjesLeegFalse - a85e8bd7-02fd-301f-3406-c0e4c5ef4b4f" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
