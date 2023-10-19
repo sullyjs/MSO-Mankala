@@ -19,45 +19,65 @@ namespace MSO2
 
         public override void Strooien()
         {
-            if (HuidigeSpeler == 2)
-            {
-                gekozenKuiltje += 6; // gekozenKuiltje voor speler 2
-            }
+            Kuiltje[] huidigeKuiltje = bord.kuiltjesSpeler1;
+            Kuiltje thuisKuiltje = bord.thuiskuiltjeSpeler1;
 
-            Console.WriteLine("Gekozen kuiltje:" + gekozenKuiltje);
-            if ( (HuidigeSpeler == 1 && (gekozenKuiltje < 1 || gekozenKuiltje > 6)) || (HuidigeSpeler == 2 && (gekozenKuiltje < 7 || gekozenKuiltje > 12)) )
+            if (HuidigeSpeler == 1)
             {
-                Console.WriteLine("Invalid move. Choose a valid kuiltje.");
-                return;
-            }
-
-            int kuiltjeIndex = (gekozenKuiltje == 0) ? 11 : gekozenKuiltje - 1;
-            int aantalStenen = bord.kuiltjesSpeler1[kuiltjeIndex].NeemStenen(); //fix here!!!!!
-            int speler = (HuidigeSpeler == 1) ? 1 : 2;
-            int huidigeKuiltjeIndex = kuiltjeIndex;
-
-            while (aantalStenen > 0)
-            {
-                huidigeKuiltjeIndex = (huidigeKuiltjeIndex + 1) % 12; //counter-clockwise
-                if ((speler == 1 && huidigeKuiltjeIndex != 6) || (speler == 2 && huidigeKuiltjeIndex != 0))
+                // Handle player 1's turn
+                if (gekozenKuiltje < 1 || gekozenKuiltje > 6 || bord.kuiltjesSpeler1[gekozenKuiltje - 1].CheckLeeg())
                 {
-                    bord.kuiltjesSpeler1[huidigeKuiltjeIndex].VoegSteenToe(1);
-                    aantalStenen--;
+                    Console.WriteLine("Ongeldige keuze. Kies een ander kuiltje.");
+                    return;
+                }
+            }
+            else if (HuidigeSpeler == 2)
+            {
+                // Handle player 2's turn
+                huidigeKuiltje = bord.kuiltjesSpeler2;
+                thuisKuiltje = bord.thuiskuiltjeSpeler2;
+                gekozenKuiltje += 6;
+                if (gekozenKuiltje < 7 || gekozenKuiltje > 12 || bord.kuiltjesSpeler2[gekozenKuiltje - 7].CheckLeeg())
+                {
+                    Console.WriteLine("Ongeldige keuze. Kies een ander kuiltje.");
+                    return;
                 }
             }
 
-            //check if the last stone landed in an empty kuiltje
-            if (speler == 1 && huidigeKuiltjeIndex < 6 && bord.kuiltjesSpeler1[huidigeKuiltjeIndex].GetSteenAantal() == 1)
+            Console.WriteLine("Gekozen kuiltje:" + gekozenKuiltje);
+
+            int aantalStenenInHand = huidigeKuiltje[gekozenKuiltje - 1].NeemStenen(); // Neem stenen uit het gekozen kuiltje
+            int huidigeKuiltjeIndex = gekozenKuiltje - 1;
+
+            while (aantalStenenInHand > 0)
             {
-                int tegenovergesteldeIndex = 11 - huidigeKuiltjeIndex;
-                int tegenovergesteldeStenen = bord.kuiltjesSpeler2[tegenovergesteldeIndex].NeemStenen();
-                bord.thuiskuiltjeSpeler1.VoegSteenToe(1 + tegenovergesteldeStenen);
+                huidigeKuiltjeIndex++; // Ga naar het volgende kuiltje
+
+                // Als we het einde van speler 1's kuiltjes bereiken, ga naar speler 2's kuiltjes
+                if (huidigeKuiltjeIndex == 6)
+                {
+                    huidigeKuiltjeIndex = 0; // Terug naar het begin van speler 1's kuiltjes
+                }
+
+                if (huidigeKuiltjeIndex == 6 && HuidigeSpeler == 2)
+                {
+                    huidigeKuiltjeIndex++; // Overslaan thuiskuiltje van speler 2
+                }
+
+                bord.kuiltjesSpeler1[huidigeKuiltjeIndex].VoegSteenToe(1); // Voeg een steen toe aan het kuiltje
+
+                aantalStenenInHand--; // Verminder het aantal stenen in de hand
             }
-            else if (speler == 2 && huidigeKuiltjeIndex > 5 && bord.kuiltjesSpeler2[huidigeKuiltjeIndex - 6].GetSteenAantal() == 1)
+
+            if (HuidigeSpeler == 1 && huidigeKuiltjeIndex == 6)
             {
-                int tegenovergesteldeIndex = 11 - huidigeKuiltjeIndex;
-                int tegenovergesteldeStenen = bord.kuiltjesSpeler1[tegenovergesteldeIndex].NeemStenen();
-                bord.thuiskuiltjeSpeler2.VoegSteenToe(1 + tegenovergesteldeStenen);
+                Console.WriteLine("Laatste steen in jouw thuiskuiltje! Je mag nog een keer.");
+                return;
+            }
+            else if (HuidigeSpeler == 2 && huidigeKuiltjeIndex == 13)
+            {
+                Console.WriteLine("Laatste steen in jouw thuiskuiltje! Je mag nog een keer.");
+                return;
             }
 
             for (int i = 0; i < 6; i++) // Status van elke kuiltje nadat steentjes zijn gestrooit
@@ -86,16 +106,25 @@ namespace MSO2
 
         protected override bool NogEenZet()
         {
-            if (true) {
-                Console.WriteLine("Ik doe nog een zet");
-                return true;
+            
 
+            // Check if the last stone landed in a non-empty pit and not in the player's home pit
+            if (true)
+            {
+                // Player can make another move
+                return true;
             }
             else
             {
-                Console.WriteLine("Nope");
+                // Player cannot make another move
                 return false;
-            } 
+            }
+
+            //als laatste kuiltje, de thuiskuiltje is, return true
+
+            //laatste steen komt in een ander kuiltje dan het thuiskuiltje van de speler, en dat kuiltje was niet leeg. De speler pakt alle stenen in het kuiltje op, en gaat verder met de beurt
+
+
         }
 
         internal override bool IsGameOver()
