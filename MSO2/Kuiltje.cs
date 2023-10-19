@@ -50,13 +50,6 @@ namespace MSO2
 		{
 			return Steentjes == 0;
 		}
-
-
-
-        public void SteentjesVeranderen(int veranderen)
-		{
-			Steentjes += veranderen;
-		}
     }
 }
 
