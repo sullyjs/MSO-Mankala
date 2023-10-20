@@ -46,7 +46,7 @@ namespace MSO2
 
             if (gekozenKuiltje < 1 || gekozenKuiltje > 6 || gekozenKuiltje == 7 || huidigeKuiltje[gekozenKuiltje - 1].CheckLeeg())
             {
-                Console.WriteLine("Ongeldige keuze. Beurt gaat door."); //denk aan een betere oplossing!!
+                Console.WriteLine("Ongeldige keuze. Beurt gaat naar de volgende."); //denk aan een betere oplossing!!
                 return;
             }
 
@@ -168,18 +168,21 @@ namespace MSO2
                 Console.WriteLine("Steentje in een niet lege kuiltje! We gaan door.");
                 NogEenZetWordtGedaan = true;
                 return true;
-            } 
+            }         
 
-            //steentje land in leeg kuiltje speler, maar de tegenstander tegenover is niet leeg
-            /*
-            if(huidigkuiltje[laatsteKuiltjeIndex - 1].CheckLeeg() && !(tegenstanderkuiltje[laatsteKuiltjeIndex - 1].CheckLeeg()))
+            // steentje landt in een leeg kuiltje van de speler -- DEZE FIXEN, de logica werkt op zich, maar niet helemaal.
+            if (huidigkuiltje[laatsteKuiltjeIndex - 1].CheckLeeg())
             {
-                Console.WriteLine("Steentje in leeg kuiltje, maar de tegenstander tegenover is niet leeg.");
-                huidigThuiskuiltje.Steentjes += tegenstanderkuiltje[laatsteKuiltjeIndex - 1].GetSteenAantal();
-                tegenstanderkuiltje[laatsteKuiltjeIndex - 1].Steentjes = 0;
-                return false;
-            }
-            */
+                // Check if the opposite pit across is not empty
+                int tegenoverliggendKuiltjeIndex = laatsteKuiltjeIndex + 1; //symmetriek
+                if (!tegenstanderkuiltje[tegenoverliggendKuiltjeIndex - 1].CheckLeeg())
+                {
+                    Console.WriteLine("Steentje in een leeg kuiltje, maar de tegenstander tegenover is niet leeg.");
+                    huidigThuiskuiltje.Steentjes += tegenstanderkuiltje[tegenoverliggendKuiltjeIndex - 1].GetSteenAantal(); //voeg stenen toe aan mijn thuiskuiltje
+                    tegenstanderkuiltje[tegenoverliggendKuiltjeIndex - 1].Steentjes = 0; //leeg de stenen van dat kuiltje
+                    return false; //niet nog een zet
+                }
+            }     
 
             //steentje in leeg kuiltje van de tegenspeler
             if (bord.kuiltjesSpeler1[laatsteKuiltjeIndex - 1].CheckLeeg() && HuidigeSpeler == 2)
