@@ -168,10 +168,13 @@ namespace MSO2
             //steentje in leeg kuiltje van de tegenspeler
             if (bord.kuiltjesSpeler1[laatsteKuiltjeIndex - 1].CheckLeeg() && HuidigeSpeler == 2)
             {
+                Console.WriteLine("Steentje in een leeg kuiltje van de tegenstander.");
                 return false;
+                
             }
             if (bord.kuiltjesSpeler2[laatsteKuiltjeIndex - 1].CheckLeeg() && HuidigeSpeler == 1)
             {
+                Console.WriteLine("Steentje in een leeg kuiltje van de tegenstander.");
                 return false;
             }
 
