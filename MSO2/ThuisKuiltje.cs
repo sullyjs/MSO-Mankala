@@ -1,11 +1,10 @@
 ﻿using System;
 namespace MSO2
 {
-	public class ThuisKuiltje
-	{
-		public ThuisKuiltje()
-		{
-		}
-	}
+    public class ThuisKuiltje : Kuiltje
+    {
+        public ThuisKuiltje(int steentjes) : base(steentjes)
+        {
+        }
+    }
 }
-
