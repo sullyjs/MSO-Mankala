@@ -20,6 +20,7 @@ namespace MSO2
         public override void Speel()
         {
             Zet();
+            Console.WriteLine("Het is speler" + HuidigeSpeler + " beurt.");
         }
 
         public override void Strooien()
@@ -68,13 +69,27 @@ namespace MSO2
                         // bij thuiskuiltje player 1
                         bord.thuiskuiltjeSpeler1.VoegSteenToe();
                         huidigeKuiltje = bord.kuiltjesSpeler2;
+                    } 
+
+                    //skip kuiltjes
+                    if (HuidigeSpeler == 1 && huidigeKant == bord.kuiltjesSpeler2)
+                    {
+                        huidigeKuiltje = bord.kuiltjesSpeler1;
+                        i--;
                     }
+                    if (HuidigeSpeler == 2 && huidigeKant == bord.kuiltjesSpeler1)
+                    {
+                        huidigeKuiltje = bord.kuiltjesSpeler2;
+                        i--;
+                    }
+
                     if (HuidigeSpeler == 2 && huidigeKant == bord.kuiltjesSpeler2)
                     {
                         // bij thuiskuiltje player 2
                         bord.thuiskuiltjeSpeler2.VoegSteenToe();
                         huidigeKuiltje = bord.kuiltjesSpeler1;
                     }
+
                     kuiltjes = 0;
                 }
                 else
@@ -120,17 +135,16 @@ namespace MSO2
                 if (HuidigeSpeler == 1)
                 {
                     HuidigeSpeler = 2;
-                    Console.WriteLine("Het is speler 2's beurt.");
                 }
                 else if (HuidigeSpeler == 2)
                 {
                     HuidigeSpeler = 1;
-                    Console.WriteLine("Het is speler 1's beurt.");
                 }
             }
             else //dan wisselen we niet van speler
             {
                 Console.WriteLine("Steentje in eigen thuiskuiltje! Je mag nog een zet doen.");
+                return;
             }
         }
 
