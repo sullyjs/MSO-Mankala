@@ -6,11 +6,16 @@ namespace MSO2
 
         MankalaBord bord = new MankalaBord();
         private int HuidigeSpeler;
+        private Kuiltje[] huidigeKant;
+        bool NogEenZetWordtGedaan;
 
         public MankalaSpel()
         {
             HuidigeSpeler = 1;
+            NogEenZetWordtGedaan = false;
+            huidigeKant = bord.kuiltjesSpeler1;
             bord = new MankalaBord();
+            bord.DrawMancalaBoard();
         }
 
         public override void Speel()
@@ -34,15 +39,14 @@ namespace MSO2
             else if (HuidigeSpeler == 2)
             {
                 Console.WriteLine("\nGekozen kuiltje:" + (gekozenKuiltje + 7));
-                huidigeKuiltje = bord.kuiltjesSpeler2;
             }
 
             int stenenInHand = huidigeKuiltje[gekozenKuiltje - 1].NeemStenen();
             int kuiltjes = gekozenKuiltje;
 
-            for (int i = 0; i < stenenInHand; i++)
+            for (int i = 0; i < stenenInHand || (stenenInHand == 0 && huidigeKuiltje[kuiltjes - 1].GetSteenAantal() > 0); i++)
             {
-                kuiltjes++;
+                kuiltjes++; //cirkel door de kuiltjes, elke kant 1-6
 
                 if (kuiltjes == 0 && HuidigeSpeler == 2)
                 {
@@ -59,7 +63,7 @@ namespace MSO2
                     }
                     if (HuidigeSpeler == 2)
                     {
-                        // bij thuiskuiltje player 1
+                        // bij thuiskuiltje player 2
                         bord.thuiskuiltjeSpeler2.VoegSteenToe();
                         huidigeKuiltje = bord.kuiltjesSpeler1;
                     }
@@ -72,60 +76,79 @@ namespace MSO2
                 }
             }
 
+
+            gekozenKuiltje = kuiltjes; //geef laatste kuiltje en kant c mee
+            huidigeKant = huidigeKuiltje;
+            
+            PrintStatus(); //status van elk kuiltje
+        }
+
+        private void PrintStatus()
+        {
             for (int i = 0; i < 6; i++) // Status van elke kuiltje nadat steentjes zijn gestrooid
             {
                 Console.WriteLine($"Kuiltje {i + 1} (Speler 1): {bord.kuiltjesSpeler1[i].GetSteenAantal()}");
             }
+            Console.WriteLine("\n");
             for (int i = 0; i < 6; i++) // Status van elke kuiltje nadat steentjes zijn gestrooid
             {
                 Console.WriteLine($"Kuiltje {i + 8} (Speler 2): {bord.kuiltjesSpeler2[i].GetSteenAantal()}");
             }
-            Console.WriteLine("Thuiskuiltje Speler 1: " + bord.thuiskuiltjeSpeler1.GetSteenAantal());
+            Console.WriteLine("\nThuiskuiltje Speler 1: " + bord.thuiskuiltjeSpeler1.GetSteenAantal());
             Console.WriteLine("Thuiskuiltje Speler 2: " + bord.thuiskuiltjeSpeler2.GetSteenAantal());
         }
 
         protected override void Zet()
         {
             Console.WriteLine("\nHuidigeSpeler " + HuidigeSpeler + " doet een zet.");
+            Strooien();
+
+            if (NogEenZet())
+            {
+                Zet(); // als speler nog een zet kan doen, doe nog een zet
+            }
+            
+
             if (HuidigeSpeler == 1)
             {
-                Strooien();
                 HuidigeSpeler = 2;
+                Console.WriteLine("Het is speler 2's beurt.");
             }
             else if (HuidigeSpeler == 2)
             {
-                Strooien();
                 HuidigeSpeler = 1;
+                Console.WriteLine("Het is speler 1's beurt.");
             } 
         }
 
         protected override bool NogEenZet()
         {
+            // laatste plaats van steentje
+            int laatsteKuiltjeIndex = gekozenKuiltje; 
+            //if(HuidigeSpeler == 1 && huidigeKant == bord.kuiltjesSpeler2)
 
-            // laatste kuiltje
-            int laatsteKuiltjeIndex = (gekozenKuiltje - 1 + gekozenKuiltje) % 14;
-
-            // check of de laatste steen in het thuiskuiltje van de speler is
-            if ((HuidigeSpeler == 1 && laatsteKuiltjeIndex == 6) || (HuidigeSpeler == 2 && laatsteKuiltjeIndex == 13))
+            if ((laatsteKuiltjeIndex == 0)) //fix this, atm infintite loop and crash
             {
+                Console.WriteLine("Steentje in eigen thuiskuiltje! Je mag nog een zet doen.");
+                NogEenZetWordtGedaan = true; //gebruik dit om te checken welke kant in strooien?
                 return true;
             }
 
-            //kijk of de laatste steen is terechtgekomen in een niet-lege kuil en niet in het thuiskuiltje van de speler
-            if (HuidigeSpeler == 1 && laatsteKuiltjeIndex < 6 && laatsteKuiltjeIndex >= 0 &&
-                !bord.kuiltjesSpeler1[laatsteKuiltjeIndex].CheckLeeg())
+            if (!bord.kuiltjesSpeler1[laatsteKuiltjeIndex - 1].CheckLeeg() && HuidigeSpeler == 1)
             {
+                Console.WriteLine("Steentje in een niet lege kuiltje!");
+                NogEenZetWordtGedaan = true;
                 return true;
             }
-            else if (HuidigeSpeler == 2 && laatsteKuiltjeIndex >= 7 && laatsteKuiltjeIndex < 13 &&
-                !bord.kuiltjesSpeler2[laatsteKuiltjeIndex - 7].CheckLeeg())
+            else if (HuidigeSpeler == 2 && !bord.kuiltjesSpeler2[laatsteKuiltjeIndex - 7].CheckLeeg()) //fix this one, want we werken met 0-5 arrays. -7 geeft out of bounds
             {
+                Console.WriteLine("Steentje in een niet lege kuiltje!");
+                NogEenZetWordtGedaan = true;
                 return true;
             }
 
-            // niet nog een zet
+            // mag niet nog een zet doen
             return false;
-
         }
 
         internal override bool IsGameOver()

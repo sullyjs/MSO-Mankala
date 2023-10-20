@@ -10,7 +10,7 @@ namespace MSO2
 
         protected GameWorld()
         {
-            bool gameActive = false;
+            gameActive = false;
         }
 
         public void RunGame()
@@ -22,8 +22,8 @@ namespace MSO2
             {
                 mankalaspel = new MankalaSpel();
                 Console.WriteLine("\nYou've created a new game of classic Mankala!");
-                Console.WriteLine("Voor speler 1 zal de gekozen nummer 1 tot 6 worden gebruikt. Voor speler 2 ook, maar moet dit worden gezien als 1 is 8, 2 is 9, 3 is 10.. etc.");
-                Console.WriteLine("kuiltje 0 en 7 werken als thuiskuiltjes.");
+                Console.WriteLine("Gebruik de nummers 1-6 op de keyboard voor beide spelers. Zie 1 als 8, 2 als 9 etc voor speler 2.");
+                Console.WriteLine("Kuiltje 0 en 7 werken als thuiskuiltjes.");
                 gameActive = true;
             } else if (inputHandler.ChooseGame() == 2)
             {
