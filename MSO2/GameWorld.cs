@@ -22,13 +22,12 @@ namespace MSO2
             {
                 mankalaspel = new MankalaSpel();
                 Console.WriteLine("\nYou've created a new game of classic Mankala!");
-                Console.WriteLine("Gebruik de nummers 1-6 op de keyboard voor beide spelers. Zie 1 als 8, 2 als 9 etc voor speler 2.");
-                Console.WriteLine("Kuiltje 0 en 7 werken als thuiskuiltjes.");
+                mankalaspel.DrawMancalaBoard();
                 gameActive = true;
             } else if (inputHandler.ChooseGame() == 2)
             {
                 mankalaspel = new VariantSpel();
-                Console.WriteLine("\nthis is a variant game mode that isn't implemented yet.");
+                Console.WriteLine("\nThis is a variant game mode that isn't implemented yet.");
                 gameActive = true;
             } else
             {
@@ -44,7 +43,6 @@ namespace MSO2
                 if (gekozenKuiltje != -1)
                 {
                     mankalaspel.gekozenKuiltje = gekozenKuiltje;
-
                     mankalaspel.Speel();
 
                     if (mankalaspel.IsGameOver())
@@ -57,7 +55,7 @@ namespace MSO2
 
              }
 
-            }
+        }
 
         public static void Main()
         {

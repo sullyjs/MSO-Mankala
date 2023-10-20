@@ -33,19 +33,5 @@ namespace MSO2
 
             return true;
         }
-
-        internal virtual void DrawMancalaBoard()
-        {
-            Console.WriteLine("Het boord ziet er zo uit.");
-            Console.WriteLine("7"); // Speler 2 kuiltjes
-            Console.WriteLine("+--+--+--+--+--+--+--+");
-            Console.WriteLine("| 13 | 12 | 11 | 10 | 9 | 8 |  |");
-            Console.WriteLine("|    |    |    |    |   |   |  |");
-            Console.WriteLine("+----+----+----+----+---+---+--+");
-            Console.WriteLine("| 1  | 2  |  3 | 4  | 5 | 6 |  |");
-            Console.WriteLine("|    |    |   |     |   |   |  |");
-            Console.WriteLine("+--+--+--+--+--+--+--+");
-            Console.WriteLine("0"); // Speler 1 kuiltjes
-        }
     }
 }

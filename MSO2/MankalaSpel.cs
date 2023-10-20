@@ -15,7 +15,6 @@ namespace MSO2
             NogEenZetWordtGedaan = false;
             huidigeKant = bord.kuiltjesSpeler1;
             bord = new MankalaBord();
-            bord.DrawMancalaBoard();
         }
 
         public override void Speel()
@@ -76,7 +75,6 @@ namespace MSO2
                 }
             }
 
-
             gekozenKuiltje = kuiltjes; //geef laatste kuiltje en kant c mee
             huidigeKant = huidigeKuiltje;
             
@@ -95,30 +93,36 @@ namespace MSO2
                 Console.WriteLine($"Kuiltje {i + 8} (Speler 2): {bord.kuiltjesSpeler2[i].GetSteenAantal()}");
             }
             Console.WriteLine("\nThuiskuiltje Speler 1: " + bord.thuiskuiltjeSpeler1.GetSteenAantal());
-            Console.WriteLine("Thuiskuiltje Speler 2: " + bord.thuiskuiltjeSpeler2.GetSteenAantal());
+            Console.WriteLine("Thuiskuiltje Speler 2: " + bord.thuiskuiltjeSpeler2.GetSteenAantal() + "\n");
         }
 
         protected override void Zet()
         {
-            Console.WriteLine("\nHuidigeSpeler " + HuidigeSpeler + " doet een zet.");
+            Console.WriteLine("\nSpeler " + HuidigeSpeler + " doet een zet.");
             Strooien();
 
-            if (NogEenZet())
+            if (gekozenKuiltje != 0) //check of t in thuiskuiltje beland
             {
-                Zet(); // als speler nog een zet kan doen, doe nog een zet
-            }
-            
+                if (NogEenZet())
+                {
+                    Zet(); // als speler nog een zet kan doen, doe nog een zet
+                }
 
-            if (HuidigeSpeler == 1)
-            {
-                HuidigeSpeler = 2;
-                Console.WriteLine("Het is speler 2's beurt.");
+                if (HuidigeSpeler == 1)
+                {
+                    HuidigeSpeler = 2;
+                    Console.WriteLine("Het is speler 2's beurt.");
+                }
+                else if (HuidigeSpeler == 2)
+                {
+                    HuidigeSpeler = 1;
+                    Console.WriteLine("Het is speler 1's beurt.");
+                }
             }
-            else if (HuidigeSpeler == 2)
+            else //dan wisselen we niet van speler
             {
-                HuidigeSpeler = 1;
-                Console.WriteLine("Het is speler 1's beurt.");
-            } 
+                Console.WriteLine("Steentje in eigen thuiskuiltje! Je mag nog een zet doen.");
+            }
         }
 
         protected override bool NogEenZet()
@@ -127,22 +131,15 @@ namespace MSO2
             int laatsteKuiltjeIndex = gekozenKuiltje; 
             //if(HuidigeSpeler == 1 && huidigeKant == bord.kuiltjesSpeler2)
 
-            if ((laatsteKuiltjeIndex == 0)) //fix this, atm infintite loop and crash
-            {
-                Console.WriteLine("Steentje in eigen thuiskuiltje! Je mag nog een zet doen.");
-                NogEenZetWordtGedaan = true; //gebruik dit om te checken welke kant in strooien?
-                return true;
-            }
-
             if (!bord.kuiltjesSpeler1[laatsteKuiltjeIndex - 1].CheckLeeg() && HuidigeSpeler == 1)
             {
-                Console.WriteLine("Steentje in een niet lege kuiltje!");
+                Console.WriteLine("Steentje in een niet lege kuiltje! We gaan door.");
                 NogEenZetWordtGedaan = true;
                 return true;
             }
-            else if (HuidigeSpeler == 2 && !bord.kuiltjesSpeler2[laatsteKuiltjeIndex - 7].CheckLeeg()) //fix this one, want we werken met 0-5 arrays. -7 geeft out of bounds
+            else if (HuidigeSpeler == 2 && !bord.kuiltjesSpeler2[laatsteKuiltjeIndex - 1].CheckLeeg()) //fix this one, want we werken met 0-5 arrays. -7 geeft out of bounds
             {
-                Console.WriteLine("Steentje in een niet lege kuiltje!");
+                Console.WriteLine("Steentje in een niet lege kuiltje! We gaan door.");
                 NogEenZetWordtGedaan = true;
                 return true;
             }

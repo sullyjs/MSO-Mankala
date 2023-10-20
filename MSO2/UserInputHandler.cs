@@ -41,6 +41,7 @@ namespace MSO2
 
         public void IfKeyPressed()
         {
+            Console.WriteLine("Kies een kuiltje: ..");
             keyInfo = Console.ReadKey();
             HandleUserInput();
         }
