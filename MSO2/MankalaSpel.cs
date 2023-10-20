@@ -26,24 +26,33 @@ namespace MSO2
         {
             Kuiltje[] huidigeKuiltje = bord.kuiltjesSpeler1;
 
-            if (HuidigeSpeler == 1)
+            if (NogEenZetWordtGedaan)
             {
-                Console.WriteLine("\nGekozen kuiltje:" + gekozenKuiltje);
-                if (gekozenKuiltje < 1 || gekozenKuiltje > 6 || gekozenKuiltje == 7 || bord.kuiltjesSpeler1[gekozenKuiltje - 1].CheckLeeg() )
+                huidigeKuiltje = huidigeKant;
+            }
+            else
+            {
+                if (HuidigeSpeler == 1)
                 {
-                    Console.WriteLine("Ongeldige keuze. Kies een ander kuiltje.");
-                    return;
+                    Console.WriteLine("\nGekozen kuiltje:" + gekozenKuiltje);
+                }
+                else if (HuidigeSpeler == 2)
+                {
+                    Console.WriteLine("\nGekozen kuiltje:" + (gekozenKuiltje + 7));
+                    huidigeKuiltje = bord.kuiltjesSpeler2;
                 }
             }
-            else if (HuidigeSpeler == 2)
+
+            if (gekozenKuiltje < 1 || gekozenKuiltje > 6 || gekozenKuiltje == 7 || huidigeKuiltje[gekozenKuiltje - 1].CheckLeeg())
             {
-                Console.WriteLine("\nGekozen kuiltje:" + (gekozenKuiltje + 7));
+                Console.WriteLine("Ongeldige keuze. Beurt gaat door."); //denk aan een betere oplossing!!
+                return;
             }
 
             int stenenInHand = huidigeKuiltje[gekozenKuiltje - 1].NeemStenen();
             int kuiltjes = gekozenKuiltje;
 
-            for (int i = 0; i < stenenInHand || (stenenInHand == 0 && huidigeKuiltje[kuiltjes - 1].GetSteenAantal() > 0); i++)
+            for (int i = 0; i < stenenInHand || (stenenInHand == 0 && huidigeKuiltje[kuiltjes - 1].GetSteenAantal() > 0); i++) //verdeel de steentjes
             {
                 kuiltjes++; //cirkel door de kuiltjes, elke kant 1-6
 
@@ -54,13 +63,13 @@ namespace MSO2
                 }
                 else if (kuiltjes == 7) {
 
-                    if (HuidigeSpeler == 1)
+                    if (HuidigeSpeler == 1 && huidigeKant == bord.kuiltjesSpeler1)
                     {
                         // bij thuiskuiltje player 1
                         bord.thuiskuiltjeSpeler1.VoegSteenToe();
                         huidigeKuiltje = bord.kuiltjesSpeler2;
                     }
-                    if (HuidigeSpeler == 2)
+                    if (HuidigeSpeler == 2 && huidigeKant == bord.kuiltjesSpeler2)
                     {
                         // bij thuiskuiltje player 2
                         bord.thuiskuiltjeSpeler2.VoegSteenToe();
@@ -77,7 +86,7 @@ namespace MSO2
 
             gekozenKuiltje = kuiltjes; //geef laatste kuiltje en kant c mee
             huidigeKant = huidigeKuiltje;
-            
+            NogEenZetWordtGedaan = false;           
             PrintStatus(); //status van elk kuiltje
         }
 
@@ -129,8 +138,6 @@ namespace MSO2
         {
             // laatste plaats van steentje
             int laatsteKuiltjeIndex = gekozenKuiltje; 
-            //if(HuidigeSpeler == 1 && huidigeKant == bord.kuiltjesSpeler2)
-
             if (!bord.kuiltjesSpeler1[laatsteKuiltjeIndex - 1].CheckLeeg() && HuidigeSpeler == 1)
             {
                 Console.WriteLine("Steentje in een niet lege kuiltje! We gaan door.");

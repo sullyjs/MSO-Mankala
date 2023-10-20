@@ -10,11 +10,6 @@ namespace MSO2
         public static UserInputHandler _instance;
         public static readonly object _instanceLock = new object();
         ConsoleKeyInfo keyInfo;
-        public Spel mankala;
-        public UserInputHandler()
-        {
-
-        }
 
         public int gekozenKuiltje = -1; //begin met een invalid getal
 
@@ -83,8 +78,6 @@ namespace MSO2
 
             if (keyInfo.Key == ConsoleKey.A)
             {
-                mankala = new MankalaSpel();
-
                 return 1;
             }
             else if (keyInfo.Key == ConsoleKey.B)
