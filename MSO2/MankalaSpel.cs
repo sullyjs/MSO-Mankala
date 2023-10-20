@@ -151,18 +151,28 @@ namespace MSO2
         protected override bool NogEenZet()
         {
             // laatste plaats van steentje
-            int laatsteKuiltjeIndex = gekozenKuiltje; 
-            if (!bord.kuiltjesSpeler1[laatsteKuiltjeIndex - 1].CheckLeeg() && HuidigeSpeler == 1)
+            int laatsteKuiltjeIndex = gekozenKuiltje;
+            Kuiltje[] huidigkuiltje = bord.kuiltjesSpeler1;
+            if (HuidigeSpeler == 2)
             {
+                huidigkuiltje = bord.kuiltjesSpeler2;
+            }
+
+            //kuiltje is niet leeg, ga verder me de beurt
+            if (!huidigkuiltje[laatsteKuiltjeIndex - 1].CheckLeeg()) {
                 Console.WriteLine("Steentje in een niet lege kuiltje! We gaan door.");
                 NogEenZetWordtGedaan = true;
                 return true;
             }
-            else if (HuidigeSpeler == 2 && !bord.kuiltjesSpeler2[laatsteKuiltjeIndex - 1].CheckLeeg()) //fix this one, want we werken met 0-5 arrays. -7 geeft out of bounds
+
+            //steentje in leeg kuiltje van de tegenspeler
+            if (bord.kuiltjesSpeler1[laatsteKuiltjeIndex - 1].CheckLeeg() && HuidigeSpeler == 2)
             {
-                Console.WriteLine("Steentje in een niet lege kuiltje! We gaan door.");
-                NogEenZetWordtGedaan = true;
-                return true;
+                return false;
+            }
+            if (bord.kuiltjesSpeler2[laatsteKuiltjeIndex - 1].CheckLeeg() && HuidigeSpeler == 1)
+            {
+                return false;
             }
 
             // mag niet nog een zet doen
