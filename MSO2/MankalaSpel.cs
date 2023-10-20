@@ -130,6 +130,7 @@ namespace MSO2
                 if (NogEenZet())
                 {
                     Zet(); // als speler nog een zet kan doen, doe nog een zet
+                    return;
                 }
 
                 if (HuidigeSpeler == 1)
@@ -143,7 +144,7 @@ namespace MSO2
             }
             else //dan wisselen we niet van speler
             {
-                Console.WriteLine("Steentje in eigen thuiskuiltje! Je mag nog een zet doen.");
+                Console.WriteLine("Steentje in eigen thuiskuiltje! Speler" + HuidigeSpeler + " mag nog een zet doen.");
                 return;
             }
         }
@@ -152,10 +153,14 @@ namespace MSO2
         {
             // laatste plaats van steentje
             int laatsteKuiltjeIndex = gekozenKuiltje;
+            Kuiltje huidigThuiskuiltje = bord.thuiskuiltjeSpeler1;
             Kuiltje[] huidigkuiltje = bord.kuiltjesSpeler1;
+            Kuiltje[] tegenstanderkuiltje = bord.kuiltjesSpeler2;
             if (HuidigeSpeler == 2)
             {
                 huidigkuiltje = bord.kuiltjesSpeler2;
+                tegenstanderkuiltje = bord.kuiltjesSpeler1;
+                huidigThuiskuiltje = bord.thuiskuiltjeSpeler2;
             }
 
             //kuiltje is niet leeg, ga verder me de beurt
@@ -163,7 +168,18 @@ namespace MSO2
                 Console.WriteLine("Steentje in een niet lege kuiltje! We gaan door.");
                 NogEenZetWordtGedaan = true;
                 return true;
+            } 
+
+            //steentje land in leeg kuiltje speler, maar de tegenstander tegenover is niet leeg
+            /*
+            if(huidigkuiltje[laatsteKuiltjeIndex - 1].CheckLeeg() && !(tegenstanderkuiltje[laatsteKuiltjeIndex - 1].CheckLeeg()))
+            {
+                Console.WriteLine("Steentje in leeg kuiltje, maar de tegenstander tegenover is niet leeg.");
+                huidigThuiskuiltje.Steentjes += tegenstanderkuiltje[laatsteKuiltjeIndex - 1].GetSteenAantal();
+                tegenstanderkuiltje[laatsteKuiltjeIndex - 1].Steentjes = 0;
+                return false;
             }
+            */
 
             //steentje in leeg kuiltje van de tegenspeler
             if (bord.kuiltjesSpeler1[laatsteKuiltjeIndex - 1].CheckLeeg() && HuidigeSpeler == 2)

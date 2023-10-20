@@ -67,6 +67,9 @@ namespace MSO2
             if (keyInfo.Key == ConsoleKey.NumPad6 || keyInfo.Key == ConsoleKey.D6)
             {
                 gekozenKuiltje = 6;
+            } else
+            {
+                Console.WriteLine("\n");
             }
 
         }
