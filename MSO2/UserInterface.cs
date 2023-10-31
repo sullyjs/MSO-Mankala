@@ -5,6 +5,7 @@ namespace MSO2
 	{
 		public UserInterface()
 		{
+			
 		}
 
 		public abstract void TekenBord();

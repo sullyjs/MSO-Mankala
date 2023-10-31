@@ -28,9 +28,16 @@ namespace MSO2
                 Console.WriteLine("\nThis is a variant game mode that isn't implemented yet.");
                 spelLogica.gameActive = true;
             }
+            else if (inputHandler.ChooseGame() == 3)
+            {
+                spelLogica.spel = new WariSpel();
+                Console.WriteLine("\nThis is Wari.");
+                spelLogica.spel.DrawMancalaBoard();
+                spelLogica.gameActive = true;
+            }
             else
             {
-                Console.WriteLine("invalid choice.");
+                Console.WriteLine("invalid choice. escaping program..");
             }
         }
 

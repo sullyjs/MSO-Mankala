@@ -87,6 +87,10 @@ namespace MSO2
             {
                 return 2;
             }
+            else if (keyInfo.Key == ConsoleKey.C)
+            {
+                return 3;
+            }
             else return 0;
         }
 

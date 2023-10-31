@@ -2,31 +2,23 @@ using System;
 namespace MSO2
 {
     public class MankalaSpel : Spel
-    {
-
-        MankalaBord bord = new MankalaBord();
-        private int HuidigeSpeler;
+    {       
         private Kuiltje[] huidigeKant;
         bool NogEenZetWordtGedaan;
 
         public MankalaSpel()
         {
+            bord = new MankalaBord();
             HuidigeSpeler = 1;
             NogEenZetWordtGedaan = false;
             huidigeKant = bord.kuiltjesSpeler1;
-            bord = new MankalaBord();
-        }
-
-        public override void Speel()
-        {
-            Zet();
-            Console.WriteLine("Het is speler" + HuidigeSpeler + " beurt.");
         }
 
         public override void Strooien()
         {
             Kuiltje[] huidigeKuiltje = bord.kuiltjesSpeler1;
 
+            //determine welk kuiltje we gebruiken voor t strooien
             if (NogEenZetWordtGedaan)
             {
                 huidigeKuiltje = huidigeKant;
@@ -44,12 +36,14 @@ namespace MSO2
                 }
             }
 
+            //is het gekozen kuiltje leeg of niet een kuiltje die mag worden gekozen?
             if (gekozenKuiltje < 1 || gekozenKuiltje > 6 || gekozenKuiltje == 7 || huidigeKuiltje[gekozenKuiltje - 1].CheckLeeg())
             {
                 Console.WriteLine("Ongeldige keuze. Beurt gaat naar de volgende."); //denk aan een betere oplossing!!
                 return;
             }
 
+            //pak de stenen op
             int stenenInHand = huidigeKuiltje[gekozenKuiltje - 1].NeemStenen();
             int kuiltjes = gekozenKuiltje;
 
@@ -57,7 +51,7 @@ namespace MSO2
             {
                 kuiltjes++; //cirkel door de kuiltjes, elke kant 1-6
 
-                if (kuiltjes == 0 && HuidigeSpeler == 2)
+                if (kuiltjes == 0 && HuidigeSpeler == 2 && bord.IsErEenThuisKuil == true)
                 {
                     // bij thuiskuiltje player 2
                     bord.thuiskuiltjeSpeler2.VoegSteenToe();
@@ -69,7 +63,14 @@ namespace MSO2
                         // bij thuiskuiltje player 1
                         bord.thuiskuiltjeSpeler1.VoegSteenToe();
                         huidigeKuiltje = bord.kuiltjesSpeler2;
-                    } 
+                    }
+                    if (HuidigeSpeler == 2 && huidigeKant == bord.kuiltjesSpeler2)
+                    {
+                        // bij thuiskuiltje player 2
+                        bord.thuiskuiltjeSpeler2.VoegSteenToe();
+                        huidigeKuiltje = bord.kuiltjesSpeler1;
+                    }
+
 
                     //skip kuiltjes
                     if (HuidigeSpeler == 1 && huidigeKant == bord.kuiltjesSpeler2)
@@ -81,13 +82,6 @@ namespace MSO2
                     {
                         huidigeKuiltje = bord.kuiltjesSpeler2;
                         i--;
-                    }
-
-                    if (HuidigeSpeler == 2 && huidigeKant == bord.kuiltjesSpeler2)
-                    {
-                        // bij thuiskuiltje player 2
-                        bord.thuiskuiltjeSpeler2.VoegSteenToe();
-                        huidigeKuiltje = bord.kuiltjesSpeler1;
                     }
 
                     kuiltjes = 0;
@@ -133,14 +127,7 @@ namespace MSO2
                     return;
                 }
 
-                if (HuidigeSpeler == 1)
-                {
-                    HuidigeSpeler = 2;
-                }
-                else if (HuidigeSpeler == 2)
-                {
-                    HuidigeSpeler = 1;
-                }
+                WisselSpeler();
             }
             else //dan wisselen we niet van speler
             {
