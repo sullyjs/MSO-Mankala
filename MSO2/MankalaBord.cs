@@ -9,10 +9,9 @@ namespace MSO2
 
         public MankalaBord() : base(aantalKuiltjes, steentjes)
         {
-            
-        } 
-
-
+            thuiskuiltjeSpeler1 = new Kuiltje(0);
+            thuiskuiltjeSpeler2 = new Kuiltje(0);
+        }
     }
 }
 

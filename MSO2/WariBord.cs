@@ -9,8 +9,8 @@ namespace MSO2
 
         public WariBord() : base(aantalKuiltjes, steentjes, false)
         {
-
-            
+            verzamelkuiltjeSpeler1 = new Kuiltje(0);
+            verzamelkuiltjeSpeler2 = new Kuiltje(0);
         }
 
         public override int Winnaar()
