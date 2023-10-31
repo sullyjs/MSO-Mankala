@@ -4,16 +4,16 @@ namespace MSO2
     public class MankalaSpel : Spel
     {
 
-        MankalaBord bord = new MankalaBord();
+        
         private Kuiltje[] huidigeKant;
         bool NogEenZetWordtGedaan;
 
         public MankalaSpel()
         {
+            bord = new MankalaBord();
             HuidigeSpeler = 1;
             NogEenZetWordtGedaan = false;
             huidigeKant = bord.kuiltjesSpeler1;
-            bord = new MankalaBord();
         }
 
         public override void Strooien()

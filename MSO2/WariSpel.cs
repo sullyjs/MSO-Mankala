@@ -5,8 +5,10 @@ namespace MSO2
 {
     public class WariSpel : Spel
     {
-
-        WariBord bord = new WariBord();
+        public WariSpel()
+        {
+            bord = new WariBord();
+        }
 
         public override void Strooien()
         {

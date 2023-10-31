@@ -7,17 +7,13 @@ namespace MSO2
         const int aantalKuiltjes = 6;
         const int steentjes = 4;
 
-        public Kuiltje verzamelkuiltjeSpeler1;
-        public Kuiltje verzamelkuiltjeSpeler2;
-
         public WariBord() : base(aantalKuiltjes, steentjes, false)
         {
-            verzamelkuiltjeSpeler1 = new Kuiltje(0);
-            verzamelkuiltjeSpeler2 = new Kuiltje(0);
 
+            
         }
 
-        public int Winnaar()
+        public override int Winnaar()
         {
             // 1 is speler 1, 2 is speler 2, 0 is gelijkspel
 
