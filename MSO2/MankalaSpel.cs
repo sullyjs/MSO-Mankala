@@ -2,7 +2,7 @@ using System;
 namespace MSO2
 {
     public class MankalaSpel : Spel
-    {    
+    {       
         private Kuiltje[] huidigeKant;
         bool NogEenZetWordtGedaan;
 
