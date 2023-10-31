@@ -4,14 +4,16 @@ namespace MSO2
     abstract public class Spel
     {
         public int gekozenKuiltje;
+        public int HuidigeSpeler;
 
         public Spel()
         {
-
+            HuidigeSpeler = 1;
         }
 
         internal virtual void DrawMancalaBoard()
         {
+            
             Console.WriteLine("Het boord ziet er zo uit.\n");
             Console.WriteLine("Speler 2"); // Speler 2 kuiltjes
             Console.WriteLine("  +----+----+----+----+---+---+--+  ");
@@ -26,17 +28,33 @@ namespace MSO2
             Console.WriteLine("Kuiltje 0 en 7 werken als thuiskuiltjes. Het is nu speler 1 beurt.");
         }
 
-        public abstract void Speel();
+        internal virtual void WisselSpeler()
+        {
+            if(HuidigeSpeler == 1)
+                {
+                    HuidigeSpeler = 2;
+                }
+                else if (HuidigeSpeler == 2)
+                {
+                    HuidigeSpeler = 1;
+                }
+        }
+
+        public virtual void Speel()
+        {
+            Zet();
+            Console.WriteLine("Het is speler" + HuidigeSpeler + " beurt.");
+        }
 
         public abstract void Strooien();
 
         protected abstract void Zet();
 
-        protected abstract bool NogEenZet();
-
         internal abstract bool IsGameOver();
 
         internal abstract void DeterMineWinner();
+
+        protected abstract bool NogEenZet();
 
 
     }

@@ -5,11 +5,13 @@ namespace MSO2
     {
         public Kuiltje[] kuiltjesSpeler1;
         public Kuiltje[] kuiltjesSpeler2;
+        public bool IsErEenThuisKuil;
 
-        public Spelbord(int aantalKuiltjesPerSpeler, int steentjesPerKuiltje)
+        public Spelbord(int aantalKuiltjesPerSpeler, int steentjesPerKuiltje, bool IsErEenThuiskuiltje = true)
         {
             kuiltjesSpeler1 = new Kuiltje[aantalKuiltjesPerSpeler];
             kuiltjesSpeler2 = new Kuiltje[aantalKuiltjesPerSpeler];
+            IsErEenThuisKuil = IsErEenThuiskuiltje;
 
             for (int i = 0; i < aantalKuiltjesPerSpeler; i++)
             {

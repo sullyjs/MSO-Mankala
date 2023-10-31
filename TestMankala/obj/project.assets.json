@@ -5457,36 +5457,40 @@
     ]
   },
   "packageFolders": {
-    "/Users/leila/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\goeve\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/leila/Documents/GitHub/MSO-Mankala/TestMankala/TestMankala.csproj",
+      "projectUniqueName": "C:\\Users\\goeve\\OneDrive\\Documenten\\GitHub\\INFOBIV MAin\\MSO-Mankala\\TestMankala\\TestMankala.csproj",
       "projectName": "TestMankala",
-      "projectPath": "/Users/leila/Documents/GitHub/MSO-Mankala/TestMankala/TestMankala.csproj",
-      "packagesPath": "/Users/leila/.nuget/packages/",
-      "outputPath": "/Users/leila/Documents/GitHub/MSO-Mankala/TestMankala/obj/",
+      "projectPath": "C:\\Users\\goeve\\OneDrive\\Documenten\\GitHub\\INFOBIV MAin\\MSO-Mankala\\TestMankala\\TestMankala.csproj",
+      "packagesPath": "C:\\Users\\goeve\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\goeve\\OneDrive\\Documenten\\GitHub\\INFOBIV MAin\\MSO-Mankala\\TestMankala\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "/Users/leila/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\goeve\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "/Users/leila/Documents/GitHub/MSO-Mankala/MSO2/MSO2.csproj": {
-              "projectPath": "/Users/leila/Documents/GitHub/MSO-Mankala/MSO2/MSO2.csproj"
+            "C:\\Users\\goeve\\OneDrive\\Documenten\\GitHub\\INFOBIV MAin\\MSO-Mankala\\MSO2\\MSO2.csproj": {
+              "projectPath": "C:\\Users\\goeve\\OneDrive\\Documenten\\GitHub\\INFOBIV MAin\\MSO-Mankala\\MSO2\\MSO2.csproj"
             }
           }
         }
@@ -5538,7 +5542,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.402/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }
