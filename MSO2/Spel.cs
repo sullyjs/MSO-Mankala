@@ -12,7 +12,7 @@ namespace MSO2
             HuidigeSpeler = 1;
         }
 
-        internal virtual void DrawMancalaBoard()
+        /*internal virtual void DrawMancalaBoard()
         {
             
             Console.WriteLine("Het boord ziet er zo uit.\n");
@@ -27,7 +27,7 @@ namespace MSO2
             Console.WriteLine("Speler 1\n"); // Speler 1 kuiltjes
             Console.WriteLine("Gebruik de nummers 1-6 op de keyboard voor beide spelers. Zie 1 als 8, 2 als 9 etc voor speler 2.");
             Console.WriteLine("Kuiltje 0 en 7 werken als thuiskuiltjes. Het is nu speler 1 beurt.");
-        }
+        }*/
 
         
 

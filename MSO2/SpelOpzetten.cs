@@ -5,10 +5,15 @@ namespace MSO2
 	{
         SpelUitvoeren spelLogica;
         UserInputHandler inputHandler = UserInputHandler.GetInstance();
+        UserInterface ui;
 
         public SpelOpzetten()
 		{
             spelLogica = new SpelUitvoeren();
+            VariantSpelKiezen();
+            
+            ui = new ConsoleUI(spelLogica.spel);
+            ui.OverviewBordTekenen();
 		}
 
 		void VariantSpelKiezen()
@@ -19,7 +24,6 @@ namespace MSO2
             {
                 spelLogica.spel = new MankalaSpel();
                 Console.WriteLine("\nYou've created a new game of classic Mankala!");
-                spelLogica.spel.DrawMancalaBoard();
                 spelLogica.gameActive = true;
             }
             else if (inputHandler.ChooseGame() == 2)
@@ -32,7 +36,6 @@ namespace MSO2
             {
                 spelLogica.spel = new WariSpel();
                 Console.WriteLine("\nThis is Wari.");
-                spelLogica.spel.DrawMancalaBoard();
                 spelLogica.gameActive = true;
             }
             else
@@ -45,7 +48,7 @@ namespace MSO2
         {
             SpelOpzetten spel = new SpelOpzetten();
 
-            spel.VariantSpelKiezen();
+            //spel.VariantSpelKiezen();
 
             UserInterface ui = new ConsoleUI(spel.spelLogica.spel);
             ui.TekenBord();

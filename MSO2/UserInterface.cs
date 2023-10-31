@@ -10,12 +10,15 @@ namespace MSO2
 			spel = huidigeSpel;
 		}
 
-		public abstract void TekenBord();
+		// voor het tekenen van een overview van het bord aan het begin van het spel voor de spelers
+		public abstract void OverviewBordTekenen();
+
+        public abstract void TekenBord();
 
 		public abstract void TekenSpelerKant(int speler);
 
-		public abstract void TekenThuiskuiltje();
-        public abstract void TekenVerzamelkuiltje();
+		// voor het tekenen van de thuiskuiltjes/verzamelkuiltjes
+		public abstract void TekenTussenkuiltje(Kuiltje kSpeler1, Kuiltje kSpeler2);
     }
 }
 
