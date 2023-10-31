@@ -4,7 +4,7 @@ namespace MSO2
     class SpelUitvoeren
     {
 
-        internal Spel spel;
+        public Spel spel;
         UserInputHandler inputHandler = UserInputHandler.GetInstance();
         internal bool gameActive;
 

@@ -3,14 +3,19 @@ namespace MSO2
 {
 	public abstract class UserInterface
 	{
-		public UserInterface()
+		protected Spel spel;
+
+		public UserInterface(Spel huidigeSpel)
 		{
-			
+			spel = huidigeSpel;
 		}
 
 		public abstract void TekenBord();
 
-		public abstract void TekenKuiltje();
-	}
+		public abstract void TekenSpelerKant(int speler);
+
+		public abstract void TekenThuiskuiltje();
+        public abstract void TekenVerzamelkuiltje();
+    }
 }
 

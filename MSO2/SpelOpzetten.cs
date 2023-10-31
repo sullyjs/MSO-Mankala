@@ -47,6 +47,9 @@ namespace MSO2
 
             spel.VariantSpelKiezen();
 
+            UserInterface ui = new ConsoleUI(spel.spelLogica.spel);
+            ui.TekenBord();
+
             spel.spelLogica.RunGame();
         }
     }

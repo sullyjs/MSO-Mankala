@@ -3,10 +3,6 @@ namespace MSO2
 {
     public class VariantSpel : Spel
     {
-
-        VariantBord bord = new VariantBord();
-        private int HuidigeSpeler;
-
         public VariantSpel()
         {
             HuidigeSpeler = 1;
