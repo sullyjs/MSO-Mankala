@@ -26,6 +26,8 @@ namespace MSO2
         public abstract void VariantKeuzeMenu();
 
 		public abstract void HuidigeSpeler(int speler);
+
+		public abstract void Winnaar(int winnaar);
     }
 }
 

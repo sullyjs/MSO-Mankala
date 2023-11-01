@@ -112,7 +112,10 @@ namespace MSO2
         // voor het tekenen van de thuis-/verzamelkuiltjes
         public override void TekenTussenkuiltje(Kuiltje kSpeler1, Kuiltje kSpeler2)
         {
-            Console.WriteLine("+ {0} +{1}+ {2} +", kSpeler1.Steentjes, binnensteKuiltjesRij, kSpeler2.Steentjes);
+            BinnenkantKuiltjeTekenen(kSpeler1.Steentjes);
+            Console.Write(binnensteKuiltjesRij);
+            BinnenkantKuiltjeTekenen(kSpeler2.Steentjes);
+            Console.Write("\n");
         }
 
         public static string CentrerenString(string s, int lengte)
@@ -157,6 +160,22 @@ namespace MSO2
         public void GekozenKuiltje(int kuiltje)
         {
             Console.WriteLine("\nGekozen kuiltje: {0}", kuiltje);
+        }
+
+        public override void Winnaar(int winnaar)
+        {
+            if (winnaar == 1)
+            {
+                Console.WriteLine("Speler 1 heeft gewonnen!");
+            }
+            else if (winnaar == 2)
+            {
+                Console.WriteLine("Speler 2 heeft gewonnen!");
+            }
+            else
+            {
+                Console.WriteLine("Het is gelijkspel!");
+            }
         }
     }
 }

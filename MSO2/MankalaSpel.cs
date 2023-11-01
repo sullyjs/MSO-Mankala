@@ -95,28 +95,16 @@ namespace MSO2
 
             gekozenKuiltje = kuiltjes; //geef laatste kuiltje en kant c mee
             huidigeKant = huidigeKuiltje;
-            NogEenZetWordtGedaan = false;           
-            PrintStatus(); //status van elk kuiltje
+            NogEenZetWordtGedaan = false;
+            ui.TekenBord();
+            //PrintStatus(); //status van elk kuiltje
         }
 
-        private void PrintStatus()
-        {
-            for (int i = 0; i < 6; i++) // Status van elke kuiltje nadat steentjes zijn gestrooid
-            {
-                Console.WriteLine($"Kuiltje {i + 1} (Speler 1): {bord.kuiltjesSpeler1[i].GetSteenAantal()}");
-            }
-            Console.WriteLine("\n");
-            for (int i = 0; i < 6; i++) // Status van elke kuiltje nadat steentjes zijn gestrooid
-            {
-                Console.WriteLine($"Kuiltje {i + 8} (Speler 2): {bord.kuiltjesSpeler2[i].GetSteenAantal()}");
-            }
-            Console.WriteLine("\nThuiskuiltje Speler 1: " + bord.thuiskuiltjeSpeler1.GetSteenAantal());
-            Console.WriteLine("Thuiskuiltje Speler 2: " + bord.thuiskuiltjeSpeler2.GetSteenAantal() + "\n");
-        }
 
         protected override void Zet()
         {
-            Console.WriteLine("\nSpeler " + HuidigeSpeler + " doet een zet.");
+            //Console.WriteLine("\nSpeler " + HuidigeSpeler + " doet een zet.");
+            ui.HuidigeSpeler(HuidigeSpeler);
             Strooien();
 
             if (gekozenKuiltje != 0) //check of t in thuiskuiltje beland
@@ -197,18 +185,7 @@ namespace MSO2
         {
             int winnaar = bord.Winnaar();
 
-            if (winnaar == 0)
-            {
-                Console.WriteLine("gelijkspel");
-            }
-            else if (winnaar == 1)
-            {
-                Console.WriteLine("Speler 1 heeft gewonnen");
-            }
-            else
-            {
-                Console.WriteLine("Speler 2 heeft gewonnen");
-            }
+            ui.Winnaar(winnaar);
         }
 
     }
