@@ -8,17 +8,18 @@ namespace MSO2
         readonly string buitenkantKuiltjeRij;
         readonly string binnensteKuiltjesRij;   // Voor ruimte tussen thuis-/verzamelkuiltjes te tekenen 
 
-        public ConsoleUI(Spel huidigeSpel) : base(huidigeSpel)
+        public ConsoleUI(Spelbord huidigeSpelbord) : base(huidigeSpelbord)
         {
-            lengteSpeelbord = spel.bord.kuiltjesSpeler1.Length;
+            lengteSpeelbord = spelbord.kuiltjesSpeler1.Length;
             buitenkantKuiltjeRij = new string('+', lengteKuiltje * lengteSpeelbord);
             binnensteKuiltjesRij = new string(' ', lengteKuiltje * (lengteSpeelbord - 2));
         }
 
         public override void OverviewBordTekenen()
         {
-            Kuiltje thuiskuiltjeSpeler1 = spel.bord.thuiskuiltjeSpeler1;
-            Kuiltje verzamelkuiltjeSpeler1 = spel.bord.verzamelkuiltjeSpeler1;
+            // om te checken welke variant van het spel wordt gespeeld
+            Kuiltje thuiskuiltjeSpeler1 = spelbord.thuiskuiltjeSpeler1;
+            Kuiltje verzamelkuiltjeSpeler1 = spelbord.verzamelkuiltjeSpeler1;
 
             Console.WriteLine("Het bord ziet er als volgt uit:");
             Console.WriteLine("Kant speler 2");
@@ -57,7 +58,7 @@ namespace MSO2
                 Console.WriteLine("Kuiltjes gemarkeerd met een *, zijn een verzamelkuiltje.");
             }
 
-            Console.WriteLine("Speler 1 is nu aan de beurt.");
+            HuidigeSpeler(1);
         }
 
         static void BinnenkantKuiltjeTekenen(int i)
@@ -72,13 +73,13 @@ namespace MSO2
 
             TekenSpelerKant(speler2);
 
-            if (spel.bord.thuiskuiltjeSpeler1 != null)
+            if (spelbord.thuiskuiltjeSpeler1 != null)
             {
-                TekenTussenkuiltje(spel.bord.thuiskuiltjeSpeler1, spel.bord.thuiskuiltjeSpeler2);
+                TekenTussenkuiltje(spelbord.thuiskuiltjeSpeler1, spelbord.thuiskuiltjeSpeler2);
             }
-            else if (spel.bord.verzamelkuiltjeSpeler1 != null)
+            else if (spelbord.verzamelkuiltjeSpeler1 != null)
             {
-                TekenTussenkuiltje(spel.bord.verzamelkuiltjeSpeler1, spel.bord.verzamelkuiltjeSpeler2);
+                TekenTussenkuiltje(spelbord.verzamelkuiltjeSpeler1, spelbord.verzamelkuiltjeSpeler2);
             }
             
             TekenSpelerKant(speler1);
@@ -90,11 +91,11 @@ namespace MSO2
 
             if (speler == 1)
             {
-                kuiltjes = spel.bord.kuiltjesSpeler1;
+                kuiltjes = spelbord.kuiltjesSpeler1;
             }
             else
             {
-                kuiltjes = spel.bord.kuiltjesSpeler2;
+                kuiltjes = spelbord.kuiltjesSpeler2;
             }
             
             Console.WriteLine(buitenkantKuiltjeRij);
@@ -108,6 +109,7 @@ namespace MSO2
             Console.WriteLine(buitenkantKuiltjeRij);
         }
 
+        // voor het tekenen van de thuis-/verzamelkuiltjes
         public override void TekenTussenkuiltje(Kuiltje kSpeler1, Kuiltje kSpeler2)
         {
             Console.WriteLine("+ {0} +{1}+ {2} +", kSpeler1.Steentjes, binnensteKuiltjesRij, kSpeler2.Steentjes);
@@ -115,10 +117,46 @@ namespace MSO2
 
         public static string CentrerenString(string s, int lengte)
         {
-            // berkenen hoeveel ruimte er aan de linkerkant van de string moet komen
+            // berekenen hoeveel ruimte er aan de linkerkant van de string moet komen
             int lengteLinks = (lengte - s.Length) / 2;
             s = s.PadLeft(lengteLinks + s.Length, ' ');
             return s.PadRight(lengte, ' ');
+        }
+
+        public override void VariantSpelKiezen(int spelKeuze)
+        {
+            if (spelKeuze == 1)
+            {
+                Console.WriteLine("\nJe hebt gekozen voor Mankala!");
+            }
+            else if (spelKeuze == 2)
+            {
+                Console.WriteLine("\nJe hebt gekozen voor Wari!");
+            }
+            else if (spelKeuze == 3)
+            {
+                Console.WriteLine("\nJe hebt gekozen voor UU!");
+            }
+            else
+            {
+                Console.WriteLine("\nOngeldige keuze");
+                throw new Exception("Ongeldige keuze ingevoerd.");
+            }
+        }
+
+        public override void VariantKeuzeMenu()
+        {
+            Console.WriteLine("Welcome to a new game of Mankala: choose A to play classic Mankala, B for Wari and C for UU.");
+        }
+
+        public override void HuidigeSpeler(int speler)
+        {
+            Console.WriteLine("Speler {0} is nu aan de beurt.", speler);
+        }
+
+        public void GekozenKuiltje(int kuiltje)
+        {
+            Console.WriteLine("\nGekozen kuiltje: {0}", kuiltje);
         }
     }
 }

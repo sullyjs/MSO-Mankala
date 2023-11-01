@@ -6,41 +6,45 @@ namespace MSO2
         SpelUitvoeren spelLogica;
         UserInputHandler inputHandler = UserInputHandler.GetInstance();
         UserInterface ui;
+        UserInterface uiSpelOpzetten;   // is nodig om functies uit UserInterface te kunnen gebruiken die geen gebruik maken van het bord
 
         public SpelOpzetten()
 		{
+            uiSpelOpzetten = new ConsoleUI(new MankalaBord());
+
             spelLogica = new SpelUitvoeren();
             VariantSpelKiezen();
             
-            ui = new ConsoleUI(spelLogica.spel);
+            ui = new ConsoleUI(spelLogica.spel.bord);
             ui.OverviewBordTekenen();
 		}
 
 		void VariantSpelKiezen()
 		{
-            Console.WriteLine("Welcome to a new game of mankala: choose A to play classic mankala, and B for a variant.");
+            uiSpelOpzetten.VariantKeuzeMenu();
 
             if (inputHandler.ChooseGame() == 1)
             {
                 spelLogica.spel = new MankalaSpel();
-                Console.WriteLine("\nYou've created a new game of classic Mankala!");
+                uiSpelOpzetten.VariantSpelKiezen(1);
                 spelLogica.gameActive = true;
             }
             else if (inputHandler.ChooseGame() == 2)
             {
-                spelLogica.spel = new VariantSpel();
-                Console.WriteLine("\nThis is a variant game mode that isn't implemented yet.");
+                spelLogica.spel = new WariSpel();
+                uiSpelOpzetten.VariantSpelKiezen(2);
                 spelLogica.gameActive = true;
             }
             else if (inputHandler.ChooseGame() == 3)
             {
-                spelLogica.spel = new WariSpel();
-                Console.WriteLine("\nThis is Wari.");
+                spelLogica.spel = new VariantSpel();
+                uiSpelOpzetten.VariantSpelKiezen(3);
                 spelLogica.gameActive = true;
             }
             else
             {
-                Console.WriteLine("invalid choice. escaping program..");
+                // ongeldige keuze
+                uiSpelOpzetten.VariantSpelKiezen(0);
             }
         }
 
@@ -50,8 +54,8 @@ namespace MSO2
 
             //spel.VariantSpelKiezen();
 
-            UserInterface ui = new ConsoleUI(spel.spelLogica.spel);
-            ui.TekenBord();
+            //UserInterface ui = new ConsoleUI(spel.spelLogica.spel);
+            //ui.TekenBord();
 
             spel.spelLogica.RunGame();
         }

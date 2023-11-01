@@ -9,9 +9,9 @@ namespace MSO2
         public MankalaSpel()
         {
             bord = new MankalaBord();
-            HuidigeSpeler = 1;
             NogEenZetWordtGedaan = false;
             huidigeKant = bord.kuiltjesSpeler1;
+            ui = new ConsoleUI(bord);
         }
 
         public override void Strooien()
@@ -27,11 +27,11 @@ namespace MSO2
             {
                 if (HuidigeSpeler == 1)
                 {
-                    Console.WriteLine("\nGekozen kuiltje:" + gekozenKuiltje);
+                    ui.GekozenKuiltje(gekozenKuiltje);
                 }
                 else if (HuidigeSpeler == 2)
                 {
-                    Console.WriteLine("\nGekozen kuiltje:" + (gekozenKuiltje + 7));
+                    ui.GekozenKuiltje(gekozenKuiltje);
                     huidigeKuiltje = bord.kuiltjesSpeler2;
                 }
             }
