@@ -30,7 +30,9 @@ namespace MSO2
 
         public bool CheckAlleKuiltjesLeeg()
         {
-            for (int i = 0; i < 6; i++)
+            int lengteSpeelbord = kuiltjesSpeler1.Length;
+
+            for (int i = 0; i < lengteSpeelbord; i++)
             {
                 if (!kuiltjesSpeler1[i].CheckLeeg() || !kuiltjesSpeler2[i].CheckLeeg())
                 {
