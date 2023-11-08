@@ -42,6 +42,19 @@ namespace MSO2
 
         protected abstract bool NogEenZet();
 
+        //check of het gekozen kuiltje niet leeg is
+        protected bool CheckValideZet(Kuiltje[] huidigeKuiltje)
+        {
+            if (gekozenKuiltje < 1 || gekozenKuiltje > 6 || huidigeKuiltje[gekozenKuiltje - 1].CheckLeeg())
+            {
+                ui.VerkeerdKuiltjeInput();
+                gekozenKuiltje = -1;
+                return false;
+            }
+
+            return true;
+        }
+
 
         // Observer Pattern
         public void Subscribe(UserInterface sub)

@@ -25,9 +25,8 @@ namespace MSO2
                     huidigeKuiltje = bord.kuiltjesSpeler2;
                 }
 
-            if (gekozenKuiltje < 1 || gekozenKuiltje > 6 || gekozenKuiltje == 7 || huidigeKuiltje[gekozenKuiltje - 1].CheckLeeg())
+            if (!CheckValideZet(huidigeKuiltje))
             {
-                Console.WriteLine("Ongeldige keuze. Beurt gaat naar de volgende."); //denk aan een betere oplossing!! in interface
                 return;
             }
 
@@ -47,10 +46,10 @@ namespace MSO2
             }
 
             gekozenKuiltje = kuiltjes; //geef laatste kuiltje en kant c mee
-            PrintStatus(); //status van elk kuiltje
+            //PrintStatus(); //status van elk kuiltje
         }
 
-        private void PrintStatus()
+        /*private void PrintStatus()
         {
             for (int i = 0; i < 6; i++) // Status van elke kuiltje nadat steentjes zijn gestrooid
             {
@@ -63,13 +62,19 @@ namespace MSO2
             }
             Console.WriteLine("\nThuiskuiltje Speler 1: " + bord.verzamelkuiltjeSpeler1.GetSteenAantal());
             Console.WriteLine("Thuiskuiltje Speler 2: " + bord.verzamelkuiltjeSpeler2.GetSteenAantal() + "\n");
-        }
+        }*/
 
 
         protected override void Zet()
         {
             Console.WriteLine("\nSpeler " + HuidigeSpeler + " doet een zet.");
             Strooien();
+
+            //als ongeldige zet
+            if (gekozenKuiltje == -1)
+            {
+                return;
+            }
 
             int laatsteKuiltjeIndex = gekozenKuiltje;
             //Kuiltje[] huidigkuiltje = bord.kuiltjesSpeler1;
@@ -89,7 +94,8 @@ namespace MSO2
                 tegenstanderkuiltje[laatsteKuiltjeIndex].Steentjes = 0; //leeg de stenen van dat kuiltje
             }
 
-            PrintStatus(); //status van elk kuiltje
+            //PrintStatus(); //status van elk kuiltje
+            NotifySubscribers();
             WisselSpeler();
 
          }

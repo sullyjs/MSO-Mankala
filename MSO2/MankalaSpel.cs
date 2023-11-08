@@ -36,11 +36,8 @@ namespace MSO2
                 }
             }
 
-            //is het gekozen kuiltje leeg of niet een kuiltje die mag worden gekozen?
-            if (gekozenKuiltje < 1 || gekozenKuiltje > 6 || gekozenKuiltje == 7 || huidigeKuiltje[gekozenKuiltje - 1].CheckLeeg())
+            if (!CheckValideZet(huidigeKuiltje))
             {
-                ui.VerkeerdKuiltjeInput();
-                gekozenKuiltje = -1;
                 return;
             }
 
