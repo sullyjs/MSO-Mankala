@@ -38,6 +38,7 @@ namespace MSO2
                 kuiltjes++; //cirkel door de kuiltjes, elke kant 0-5
                 if (kuiltjes == 6)
                 {
+                    //FIX WISSELEN VAN KANT
                     kuiltjes = 0;
                 }
                     // anders voeg een steentje toe
