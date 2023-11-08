@@ -33,6 +33,7 @@ namespace MSO2
                 if (HuidigeSpeler == 1)
                 {
                     Console.WriteLine("\nGekozen kuiltje:" + gekozenKuiltje);
+
                 }
                 else if (HuidigeSpeler == 2)
                 {
