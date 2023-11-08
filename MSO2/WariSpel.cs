@@ -8,6 +8,7 @@ namespace MSO2
         public WariSpel()
         {
             bord = new WariBord();
+            ui = new ConsoleUI(this);
         }
 
         public override void Strooien()

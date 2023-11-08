@@ -18,6 +18,7 @@ namespace MSO2
         public VariantSpel()
         {
             bord = new VariantBord();
+            ui = new ConsoleUI(this);
             huidigeKant = bord.kuiltjesSpeler1;
         }
 

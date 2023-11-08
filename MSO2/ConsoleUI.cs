@@ -32,10 +32,14 @@ namespace MSO2
             }
             Console.Write("\n");
 
+            Console.WriteLine(buitenkantKuiltjeRij);
+
             if (thuiskuiltjeSpeler1 != null || verzamelkuiltjeSpeler1 != null)
             {
                 Console.WriteLine("+{0}+{1}+{0}+", CentrerenString("*", lengteKuiltje - 2), binnensteKuiltjesRij);
             }
+
+            Console.WriteLine(buitenkantKuiltjeRij);
 
             for (int i = 1; i <= lengteSpeelbord; i++)
             {
