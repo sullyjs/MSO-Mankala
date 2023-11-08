@@ -6,7 +6,8 @@ namespace MSO2
         public int gekozenKuiltje;
         public int HuidigeSpeler;
         public Spelbord bord;
-        protected ConsoleUI ui;
+        protected UserInterface ui;
+        protected List<UserInterface> subscribers = new();
 
         public Spel()
         {
@@ -15,7 +16,7 @@ namespace MSO2
 
         internal virtual void WisselSpeler()
         {
-            if(HuidigeSpeler == 1)
+            if (HuidigeSpeler == 1)
                 {
                     HuidigeSpeler = 2;
                 }
@@ -28,7 +29,7 @@ namespace MSO2
         public virtual void Speel()
         {
             Zet();
-            ui.HuidigeSpeler(HuidigeSpeler);
+            ui.HuidigeSpeler();
         }
 
         public abstract void Strooien();
@@ -42,6 +43,19 @@ namespace MSO2
         protected abstract bool NogEenZet();
 
 
+        // Observer Pattern
+        public void Subscribe(UserInterface sub)
+        {
+            subscribers.Add(sub);
+        }
+
+        public void NotifySubscribers()
+        {
+            foreach (UserInterface sub in subscribers)
+            {
+                sub.Update();
+            }
+        }
     }
 }
 

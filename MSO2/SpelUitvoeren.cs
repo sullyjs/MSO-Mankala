@@ -7,6 +7,7 @@ namespace MSO2
         public Spel spel;
         UserInputHandler inputHandler = UserInputHandler.GetInstance();
         internal bool gameActive;
+        private UserInterface ui;
 
         public SpelUitvoeren()
         {
@@ -15,9 +16,10 @@ namespace MSO2
 
         public void RunGame()
         {
+            ui = new ConsoleUI(spel);
             while (gameActive)
             {
-
+                ui.KuiltjeKiezen();
                 inputHandler.IfKeyPressed();
                 int gekozenKuiltje = inputHandler.GekozenKuiltje;
 
@@ -32,7 +34,12 @@ namespace MSO2
                         gameActive = false;
                         //Console.WriteLine("Game Over!");
                     }
-                } 
+                }
+                else
+                {
+                    ui.VerkeerdKuiltjeInput();
+                    ui.HuidigeSpeler();
+                }
 
              }
 

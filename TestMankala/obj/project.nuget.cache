@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "KZnJV6cy0GKjoMncVHKFTv2yXZFEWCcEOZZJxE8vC9rWVYOLmRB0pxqBNJOx+ewkQtVmg1qVuDBiIz+VI6nUGw==",
+  "dgSpecHash": "7HPM9s6veM/ASgm7usJKODlrbpFP3DP2ANFPu2U1+2tA34hSzlC15Fe6FWOX+wUrdf/PMDGnOfl4g5Vay7LiRA==",
   "success": true,
   "projectFilePath": "/Users/leila/Documents/GitHub/MSO-Mankala/TestMankala/TestMankala.csproj",
   "expectedPackageFiles": [
@@ -85,13 +85,13 @@
     "/usr/local/share/dotnet/sdk/NuGetFallbackFolder/system.threading.timer/4.3.0/system.threading.timer.4.3.0.nupkg.sha512",
     "/usr/local/share/dotnet/sdk/NuGetFallbackFolder/system.xml.readerwriter/4.3.0/system.xml.readerwriter.4.3.0.nupkg.sha512",
     "/usr/local/share/dotnet/sdk/NuGetFallbackFolder/system.xml.xdocument/4.3.0/system.xml.xdocument.4.3.0.nupkg.sha512",
-    "/Users/leila/.nuget/packages/xunit/2.5.3/xunit.2.5.3.nupkg.sha512",
+    "/Users/leila/.nuget/packages/xunit/2.6.1/xunit.2.6.1.nupkg.sha512",
     "/Users/leila/.nuget/packages/xunit.abstractions/2.0.3/xunit.abstractions.2.0.3.nupkg.sha512",
     "/Users/leila/.nuget/packages/xunit.analyzers/1.4.0/xunit.analyzers.1.4.0.nupkg.sha512",
-    "/Users/leila/.nuget/packages/xunit.assert/2.5.3/xunit.assert.2.5.3.nupkg.sha512",
-    "/Users/leila/.nuget/packages/xunit.core/2.5.3/xunit.core.2.5.3.nupkg.sha512",
-    "/Users/leila/.nuget/packages/xunit.extensibility.core/2.5.3/xunit.extensibility.core.2.5.3.nupkg.sha512",
-    "/Users/leila/.nuget/packages/xunit.extensibility.execution/2.5.3/xunit.extensibility.execution.2.5.3.nupkg.sha512",
+    "/Users/leila/.nuget/packages/xunit.assert/2.6.1/xunit.assert.2.6.1.nupkg.sha512",
+    "/Users/leila/.nuget/packages/xunit.core/2.6.1/xunit.core.2.6.1.nupkg.sha512",
+    "/Users/leila/.nuget/packages/xunit.extensibility.core/2.6.1/xunit.extensibility.core.2.6.1.nupkg.sha512",
+    "/Users/leila/.nuget/packages/xunit.extensibility.execution/2.6.1/xunit.extensibility.execution.2.6.1.nupkg.sha512",
     "/Users/leila/.nuget/packages/xunit.runner.visualstudio/2.5.3/xunit.runner.visualstudio.2.5.3.nupkg.sha512"
   ],
   "logs": []

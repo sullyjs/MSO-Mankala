@@ -3,31 +3,37 @@ namespace MSO2
 {
 	public abstract class UserInterface
 	{
-		protected Spelbord spelbord;
+        protected Spel spel;
+        protected Spelbord spelbord;
 
-		public UserInterface(Spelbord huidigeSpelbord)
+		public UserInterface(Spel huidigeSpel)
 		{
-			spelbord = huidigeSpelbord;
+			spel = huidigeSpel;
+			spelbord = spel.bord;
 		}
 
 		// voor het tekenen van een overview van het bord aan het begin van het spel voor de spelers
 		public abstract void OverviewBordTekenen();
 
+		//Observer pattern methode
+		public abstract void Update();
+
         public abstract void TekenBord();
-
-		// kuiltjes van 1 speler tekenen
-		public abstract void TekenSpelerKant(int speler);
-
-		// voor het tekenen van de thuiskuiltjes/verzamelkuiltjes
-		public abstract void TekenTussenkuiltje(Kuiltje kSpeler1, Kuiltje kSpeler2);
 
 		public abstract void VariantSpelKiezen(int spelKeuze);
 
         public abstract void VariantKeuzeMenu();
 
-		public abstract void HuidigeSpeler(int speler);
+		public abstract void HuidigeSpeler();
 
 		public abstract void Winnaar(int winnaar);
+
+		public abstract void GekozenKuiltje();
+
+		public abstract void KuiltjeKiezen();
+
+		// error message voor als een ongeldig kuiltje wordt gekozen
+		public abstract void VerkeerdKuiltjeInput();
     }
 }
 

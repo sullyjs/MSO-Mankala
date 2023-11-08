@@ -10,12 +10,14 @@ namespace MSO2
 
         public SpelOpzetten()
 		{
-            uiSpelOpzetten = new ConsoleUI(new MankalaBord());
+            uiSpelOpzetten = new ConsoleUI(new MankalaSpel());
 
             spelLogica = new SpelUitvoeren();
             VariantSpelKiezen();
             
-            ui = new ConsoleUI(spelLogica.spel.bord);
+            ui = new ConsoleUI(spelLogica.spel);
+            // ervoor zorgen dat de UI een observer wordt van het Spel
+            spelLogica.spel.Subscribe(ui);
             ui.OverviewBordTekenen();
 		}
 

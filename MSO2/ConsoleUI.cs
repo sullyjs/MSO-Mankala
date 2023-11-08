@@ -8,7 +8,7 @@ namespace MSO2
         readonly string buitenkantKuiltjeRij;
         readonly string binnensteKuiltjesRij;   // Voor ruimte tussen thuis-/verzamelkuiltjes te tekenen 
 
-        public ConsoleUI(Spelbord huidigeSpelbord) : base(huidigeSpelbord)
+        public ConsoleUI(Spel huidgeSpel) : base(huidgeSpel)
         {
             lengteSpeelbord = spelbord.kuiltjesSpeler1.Length;
             buitenkantKuiltjeRij = new string('+', lengteKuiltje * lengteSpeelbord);
@@ -58,12 +58,21 @@ namespace MSO2
                 Console.WriteLine("Kuiltjes gemarkeerd met een *, zijn een verzamelkuiltje.");
             }
 
-            HuidigeSpeler(1);
+            HuidigeSpeler();
         }
 
         static void BinnenkantKuiltjeTekenen(int i)
         {
             Console.Write("+{0}+", CentrerenString(i.ToString(), lengteKuiltje - 2));
+        }
+
+        public override void Update()
+        {
+            //cw om wat ruimte tussen de borden te tekenen voor de leesbaarheid
+            Console.WriteLine();
+            Console.WriteLine("Huidige status bord:");
+            TekenBord();
+            Console.WriteLine();
         }
 
         public override void TekenBord()
@@ -85,7 +94,7 @@ namespace MSO2
             TekenSpelerKant(speler1);
         }
 
-        public override void TekenSpelerKant(int speler)
+        private void TekenSpelerKant(int speler)
         {
             Kuiltje[] kuiltjes;
 
@@ -110,7 +119,7 @@ namespace MSO2
         }
 
         // voor het tekenen van de thuis-/verzamelkuiltjes
-        public override void TekenTussenkuiltje(Kuiltje kSpeler1, Kuiltje kSpeler2)
+        private void TekenTussenkuiltje(Kuiltje kSpeler1, Kuiltje kSpeler2)
         {
             BinnenkantKuiltjeTekenen(kSpeler1.Steentjes);
             Console.Write(binnensteKuiltjesRij);
@@ -118,7 +127,7 @@ namespace MSO2
             Console.Write("\n");
         }
 
-        public static string CentrerenString(string s, int lengte)
+        private static string CentrerenString(string s, int lengte)
         {
             // berekenen hoeveel ruimte er aan de linkerkant van de string moet komen
             int lengteLinks = (lengte - s.Length) / 2;
@@ -152,14 +161,14 @@ namespace MSO2
             Console.WriteLine("Welcome to a new game of Mankala: choose A to play classic Mankala, B for Wari and C for UU.");
         }
 
-        public override void HuidigeSpeler(int speler)
+        public override void HuidigeSpeler()
         {
-            Console.WriteLine("Speler {0} is nu aan de beurt.", speler);
+            Console.WriteLine("Speler {0} is nu aan de beurt.", spel.HuidigeSpeler);
         }
 
-        public void GekozenKuiltje(int kuiltje)
+        public override void GekozenKuiltje()
         {
-            Console.WriteLine("\nGekozen kuiltje: {0}", kuiltje);
+            Console.WriteLine("\nGekozen kuiltje: {0}", spel.gekozenKuiltje);
         }
 
         public override void Winnaar(int winnaar)
@@ -176,6 +185,16 @@ namespace MSO2
             {
                 Console.WriteLine("Het is gelijkspel!");
             }
+        }
+
+        public override void KuiltjeKiezen()
+        {
+            Console.WriteLine("Kies een kuiltje...");
+        }
+
+        public override void VerkeerdKuiltjeInput()
+        {
+            Console.WriteLine("Ongeldige keuze, kies opnieuw...");
         }
     }
 }

@@ -11,7 +11,7 @@ namespace MSO2
             bord = new MankalaBord();
             NogEenZetWordtGedaan = false;
             huidigeKant = bord.kuiltjesSpeler1;
-            ui = new ConsoleUI(bord);
+            ui = new ConsoleUI(this);
         }
 
         public override void Strooien()
@@ -27,11 +27,11 @@ namespace MSO2
             {
                 if (HuidigeSpeler == 1)
                 {
-                    ui.GekozenKuiltje(gekozenKuiltje);
+                    ui.GekozenKuiltje();
                 }
                 else if (HuidigeSpeler == 2)
                 {
-                    ui.GekozenKuiltje(gekozenKuiltje);
+                    ui.GekozenKuiltje();
                     huidigeKuiltje = bord.kuiltjesSpeler2;
                 }
             }
@@ -39,7 +39,8 @@ namespace MSO2
             //is het gekozen kuiltje leeg of niet een kuiltje die mag worden gekozen?
             if (gekozenKuiltje < 1 || gekozenKuiltje > 6 || gekozenKuiltje == 7 || huidigeKuiltje[gekozenKuiltje - 1].CheckLeeg())
             {
-                Console.WriteLine("Ongeldige keuze. Beurt gaat naar de volgende."); //denk aan een betere oplossing!!
+                ui.VerkeerdKuiltjeInput();
+                gekozenKuiltje = -1;
                 return;
             }
 
@@ -96,16 +97,19 @@ namespace MSO2
             gekozenKuiltje = kuiltjes; //geef laatste kuiltje en kant c mee
             huidigeKant = huidigeKuiltje;
             NogEenZetWordtGedaan = false;
-            ui.TekenBord();
-            //PrintStatus(); //status van elk kuiltje
+            NotifySubscribers();    // bord wordt opnieuw getekend
         }
 
 
         protected override void Zet()
         {
-            //Console.WriteLine("\nSpeler " + HuidigeSpeler + " doet een zet.");
-            ui.HuidigeSpeler(HuidigeSpeler);
             Strooien();
+
+            // Als invalid move is gezet, moet er opnieuw een zet gekozen worden door de speler
+            if (gekozenKuiltje == -1)
+            {
+                return;
+            }
 
             if (gekozenKuiltje != 0) //check of t in thuiskuiltje beland
             {
@@ -119,7 +123,7 @@ namespace MSO2
             }
             else //dan wisselen we niet van speler
             {
-                Console.WriteLine("Steentje in eigen thuiskuiltje! Speler" + HuidigeSpeler + " mag nog een zet doen.");
+                //Console.WriteLine("Steentje in eigen thuiskuiltje! Speler" + HuidigeSpeler + " mag nog een zet doen.");
                 return;
             }
         }
@@ -140,7 +144,7 @@ namespace MSO2
 
             //kuiltje is niet leeg, ga verder me de beurt
             if (!huidigkuiltje[laatsteKuiltjeIndex - 1].CheckLeeg()) {
-                Console.WriteLine("Steentje in een niet lege kuiltje! We gaan door.");
+                //Console.WriteLine("Steentje in een niet lege kuiltje! We gaan door.");
                 NogEenZetWordtGedaan = true;
                 return true;
             }         
@@ -152,7 +156,7 @@ namespace MSO2
                 int tegenoverliggendKuiltjeIndex = laatsteKuiltjeIndex + 1; //symmetriek
                 if (!tegenstanderkuiltje[tegenoverliggendKuiltjeIndex - 1].CheckLeeg())
                 {
-                    Console.WriteLine("Steentje in een leeg kuiltje, maar de tegenstander tegenover is niet leeg.");
+                    //Console.WriteLine("Steentje in een leeg kuiltje, maar de tegenstander tegenover is niet leeg.");
                     huidigThuiskuiltje.Steentjes += tegenstanderkuiltje[tegenoverliggendKuiltjeIndex - 1].GetSteenAantal(); //voeg stenen toe aan mijn thuiskuiltje
                     tegenstanderkuiltje[tegenoverliggendKuiltjeIndex - 1].Steentjes = 0; //leeg de stenen van dat kuiltje
                     return false; //niet nog een zet
@@ -162,13 +166,13 @@ namespace MSO2
             //steentje in leeg kuiltje van de tegenspeler
             if (bord.kuiltjesSpeler1[laatsteKuiltjeIndex - 1].CheckLeeg() && HuidigeSpeler == 2)
             {
-                Console.WriteLine("Steentje in een leeg kuiltje van de tegenstander.");
+                //Console.WriteLine("Steentje in een leeg kuiltje van de tegenstander.");
                 return false;
                 
             }
             if (bord.kuiltjesSpeler2[laatsteKuiltjeIndex - 1].CheckLeeg() && HuidigeSpeler == 1)
             {
-                Console.WriteLine("Steentje in een leeg kuiltje van de tegenstander.");
+                //Console.WriteLine("Steentje in een leeg kuiltje van de tegenstander.");
                 return false;
             }
 
