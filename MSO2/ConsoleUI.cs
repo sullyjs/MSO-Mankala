@@ -58,6 +58,7 @@ namespace MSO2
                 Console.WriteLine("Kuiltjes gemarkeerd met een *, zijn een verzamelkuiltje.");
             }
 
+            Console.WriteLine();
             HuidigeSpeler();
         }
 
@@ -151,8 +152,8 @@ namespace MSO2
             }
             else
             {
-                Console.WriteLine("\nOngeldige keuze");
-                throw new Exception("Ongeldige keuze ingevoerd.");
+                Console.WriteLine("\nOngeldige keuze, kies opnieuw.");
+                //throw new Exception("Ongeldige keuze ingevoerd.");
             }
         }
 
@@ -194,6 +195,7 @@ namespace MSO2
 
         public override void VerkeerdKuiltjeInput()
         {
+            Console.WriteLine();
             Console.WriteLine("Ongeldige keuze, kies opnieuw...");
         }
     }

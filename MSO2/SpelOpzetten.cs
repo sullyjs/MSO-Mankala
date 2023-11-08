@@ -25,19 +25,21 @@ namespace MSO2
 		{
             uiSpelOpzetten.VariantKeuzeMenu();
 
-            if (inputHandler.ChooseGame() == 1)
+            int variantSpel = inputHandler.ChooseGame();
+
+            if (variantSpel == 1)
             {
                 spelLogica.spel = new MankalaSpel();
                 uiSpelOpzetten.VariantSpelKiezen(1);
                 spelLogica.gameActive = true;
             }
-            else if (inputHandler.ChooseGame() == 2)
+            else if (variantSpel == 2)
             {
                 spelLogica.spel = new WariSpel();
                 uiSpelOpzetten.VariantSpelKiezen(2);
                 spelLogica.gameActive = true;
             }
-            else if (inputHandler.ChooseGame() == 3)
+            else if (variantSpel == 3)
             {
                 spelLogica.spel = new VariantSpel();
                 uiSpelOpzetten.VariantSpelKiezen(3);
@@ -47,6 +49,7 @@ namespace MSO2
             {
                 // ongeldige keuze
                 uiSpelOpzetten.VariantSpelKiezen(0);
+                VariantSpelKiezen();
             }
         }
 
