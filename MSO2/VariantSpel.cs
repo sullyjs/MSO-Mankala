@@ -3,7 +3,6 @@ namespace MSO2
 {
     public class VariantSpel : Spel
     {
-        bool NogEenZetWordtGedaan;
         private Kuiltje[] huidigeKantKuiltjes;
         private int huidigeKant;
 
@@ -26,6 +25,7 @@ namespace MSO2
         {
             bord = new VariantBord();
             ui = new ConsoleUI(this);
+
             huidigeKantKuiltjes = bord.kuiltjesSpeler1;
             huidigeKant = 1;
             lengteSpelbord = bord.kuiltjesSpeler1.Length;
@@ -41,7 +41,7 @@ namespace MSO2
             while(stenenInHand != 0)
             {
                 // als aan het einde van de rij kuiltjes gekomen
-                if (huidigeKuiltjeStrooien >= huidigeKantKuiltjes.Length)
+                if (huidigeKuiltjeStrooien >= lengteSpelbord)
                 {
                     if (huidigeKant == 1)
                     {

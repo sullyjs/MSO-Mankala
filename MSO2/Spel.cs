@@ -9,6 +9,11 @@ namespace MSO2
         protected UserInterface ui;
         protected List<UserInterface> subscribers = new();
 
+        private Kuiltje[] huidigeKantKuiltjes;
+        private int huidigeKant;
+        int huidigeKuiltjeStrooien;
+        int lengteSpelbord;
+
         public Spel()
         {
             HuidigeSpeler = 1;
@@ -33,6 +38,41 @@ namespace MSO2
         }
 
         public abstract void Strooien();
+
+        public void StrooienZonderThuisKuiltjes()
+        {
+            ui.GekozenKuiltje();
+
+            int stenenInHand = huidigeKantKuiltjes[gekozenKuiltje - 1].NeemStenen();
+            huidigeKuiltjeStrooien = gekozenKuiltje;
+
+            while (stenenInHand != 0)
+            {
+                // als aan het einde van de rij kuiltjes gekomen
+                if (huidigeKuiltjeStrooien >= huidigeKantKuiltjes.Length)
+                {
+                    if (huidigeKant == 1)
+                    {
+                        huidigeKantKuiltjes = bord.kuiltjesSpeler2;
+                        huidigeKant = 2;
+                    }
+                    else
+                    {
+                        huidigeKantKuiltjes = bord.kuiltjesSpeler1;
+                        huidigeKant = 1;
+                    }
+
+                    huidigeKuiltjeStrooien = 0;
+                }
+
+                huidigeKantKuiltjes[huidigeKuiltjeStrooien].VoegSteenToe(1);
+                stenenInHand--;
+                huidigeKuiltjeStrooien++;
+            }
+
+            // correcte index van laatste kuiltje, want door while loop 1 te hoog
+            huidigeKuiltjeStrooien--;
+        }
 
         protected abstract void Zet();
 

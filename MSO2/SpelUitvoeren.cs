@@ -32,7 +32,6 @@ namespace MSO2
                     {
                         spel.DeterMineWinner();
                         gameActive = false;
-                        //Console.WriteLine("Game Over!");
                     }
                 }
                 else

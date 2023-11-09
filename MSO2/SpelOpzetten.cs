@@ -10,7 +10,7 @@ namespace MSO2
 
         public SpelOpzetten()
 		{
-            uiSpelOpzetten = new ConsoleUI(new MankalaSpel());
+            uiSpelOpzetten = new ConsoleUI(new MankalaSpel());  //random Mankala spel, want bord wordt niet gebruikt
 
             spelLogica = new SpelUitvoeren();
             VariantSpelKiezen();
@@ -56,11 +56,6 @@ namespace MSO2
         public static void Main()
         {
             SpelOpzetten spel = new SpelOpzetten();
-
-            //spel.VariantSpelKiezen();
-
-            //UserInterface ui = new ConsoleUI(spel.spelLogica.spel);
-            //ui.TekenBord();
 
             spel.spelLogica.RunGame();
         }
