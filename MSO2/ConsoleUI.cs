@@ -114,9 +114,19 @@ namespace MSO2
             
             Console.WriteLine(buitenkantKuiltjeRij);
 
-            foreach (Kuiltje k in kuiltjes)
+            if (speler == 1)
             {
-                BinnenkantKuiltjeTekenen(k.Steentjes);
+                for (int i = 0; i < lengteSpeelbord; i++)
+                {
+                    BinnenkantKuiltjeTekenen(kuiltjes[i].Steentjes);
+                }
+            }
+            else
+            {
+                for (int i = lengteSpeelbord - 1; i > -1; i--)
+                {
+                    BinnenkantKuiltjeTekenen(kuiltjes[i].Steentjes);
+                }
             }
 
             Console.Write("\n");
