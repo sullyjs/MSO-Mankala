@@ -161,10 +161,10 @@ namespace MSO2
             return true;
         }
 
-        internal override void DeterMineWinner()
+        /*internal override void DeterMineWinner()
         {
             Console.WriteLine("Winnaar beslist.");
-        }
+        }*/
 
     }
 }

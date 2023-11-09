@@ -17,11 +17,11 @@ namespace MSO2
 
                 if (HuidigeSpeler == 1)
                 {
-                    Console.WriteLine("\nGekozen kuiltje:" + gekozenKuiltje);
+                    ui.GekozenKuiltje();
                 }
                 else if (HuidigeSpeler == 2)
                 {
-                    Console.WriteLine("\nGekozen kuiltje:" + (gekozenKuiltje + 7));
+                    ui.GekozenKuiltje();
                     huidigeKuiltje = bord.kuiltjesSpeler2;
                 }
 
@@ -46,28 +46,11 @@ namespace MSO2
             }
 
             gekozenKuiltje = kuiltjes; //geef laatste kuiltje en kant c mee
-            //PrintStatus(); //status van elk kuiltje
         }
-
-        /*private void PrintStatus()
-        {
-            for (int i = 0; i < 6; i++) // Status van elke kuiltje nadat steentjes zijn gestrooid
-            {
-                Console.WriteLine($"Kuiltje {i + 1} (Speler 1): {bord.kuiltjesSpeler1[i].GetSteenAantal()}");
-            }
-            Console.WriteLine("\n");
-            for (int i = 0; i < 6; i++) // Status van elke kuiltje nadat steentjes zijn gestrooid
-            {
-                Console.WriteLine($"Kuiltje {i + 8} (Speler 2): {bord.kuiltjesSpeler2[i].GetSteenAantal()}");
-            }
-            Console.WriteLine("\nThuiskuiltje Speler 1: " + bord.verzamelkuiltjeSpeler1.GetSteenAantal());
-            Console.WriteLine("Thuiskuiltje Speler 2: " + bord.verzamelkuiltjeSpeler2.GetSteenAantal() + "\n");
-        }*/
-
 
         protected override void Zet()
         {
-            Console.WriteLine("\nSpeler " + HuidigeSpeler + " doet een zet.");
+            //Console.WriteLine("\nSpeler " + HuidigeSpeler + " doet een zet.");
             Strooien();
 
             //als ongeldige zet
@@ -94,7 +77,7 @@ namespace MSO2
                 tegenstanderkuiltje[laatsteKuiltjeIndex].Steentjes = 0; //leeg de stenen van dat kuiltje
             }
 
-            //PrintStatus(); //status van elk kuiltje
+            //spelbord is veranderd, dus doorgeven aan subscribers ui
             NotifySubscribers();
             WisselSpeler();
 
@@ -108,7 +91,6 @@ namespace MSO2
 
         internal override bool IsGameOver()
         {
-
             Kuiltje[] huidigeKuiltje = bord.kuiltjesSpeler1;
             if (HuidigeSpeler == 2)
             {
@@ -127,24 +109,6 @@ namespace MSO2
             }
             //een speler geen zet kan doen doordat deze geen stenen meer heeft, eindigt het spel
             return true;
-        }
-
-        internal override void DeterMineWinner() //make simpler
-        {
-            int winnaar = bord.Winnaar();
-
-            if (winnaar == 0)
-            {
-                Console.WriteLine("gelijkspel");
-            }
-            else if (winnaar == 1)
-            {
-                Console.WriteLine("Speler 1 heeft gewonnen");
-            }
-            else
-            {
-                Console.WriteLine("Speler 2 heeft gewonnen");
-            }
         }
     }
 }

@@ -173,7 +173,14 @@ namespace MSO2
 
         public override void GekozenKuiltje()
         {
-            Console.WriteLine("\nGekozen kuiltje: {0}", spel.gekozenKuiltje);
+            int kuiltje = spel.gekozenKuiltje;
+
+            if (spel.HuidigeSpeler == 2)
+            {
+                kuiltje += lengteSpeelbord;
+            }
+
+            Console.WriteLine("\nGekozen kuiltje: {0}", kuiltje);
         }
 
         public override void Winnaar(int winnaar)

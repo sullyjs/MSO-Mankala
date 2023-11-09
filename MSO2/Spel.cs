@@ -38,7 +38,12 @@ namespace MSO2
 
         internal abstract bool IsGameOver();
 
-        internal abstract void DeterMineWinner();
+        internal void DeterMineWinner()
+        {
+            int winnaar = bord.Winnaar();
+
+            ui.Winnaar(winnaar);
+        }
 
         protected abstract bool NogEenZet();
 

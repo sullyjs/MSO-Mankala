@@ -182,12 +182,12 @@ namespace MSO2
             return bord.CheckAlleKuiltjesLeeg();
         }
 
-        internal override void DeterMineWinner()
+        /*internal override void DeterMineWinner()
         {
             int winnaar = bord.Winnaar();
 
             ui.Winnaar(winnaar);
-        }
+        }*/
 
     }
 }
