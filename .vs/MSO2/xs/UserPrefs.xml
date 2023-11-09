@@ -1,22 +1,24 @@
 ﻿<Properties StartupConfiguration="{0E1AF4EF-B535-4C80-A679-ACDA162C69D9}|Default">
-  <MonoDevelop.Ide.ItemProperties.MankalaTest FirstBuild="True" />
   <MonoDevelop.Ide.ItemProperties.MSO2 PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MSO2/Spel.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workbench ActiveDocument="MSO2/SpelUitvoeren.cs">
     <Files>
-      <File FileName="MSO2/MankalaBord.cs" Line="31" Column="14" />
-      <File FileName="MSO2/GameWorld.cs" Line="67" Column="6" />
-      <File FileName="MSO2/MankalaSpel.cs" Line="129" Column="10" />
-      <File FileName="MSO2/UserInputHandler.cs" Line="71" Column="83" />
-      <File FileName="TestMankala/TestMankalaBord.cs" Line="17" Column="13" />
-      <File FileName="MSO2/Kuiltje.cs" Line="1" Column="1" />
+      <File FileName="MSO2/UserInterface.cs" />
+      <File FileName="MSO2/ConsoleUI.cs" />
+      <File FileName="MSO2/SpelOpzetten.cs" />
+      <File FileName="MSO2/SpelUitvoeren.cs" Line="20" Column="1" />
+      <File FileName="MSO2/Spelbord.cs" />
       <File FileName="MSO2/Spel.cs" Line="1" Column="1" />
+      <File FileName="MSO2/MankalaSpel.cs" Line="99" Column="1" />
+      <File FileName="MSO2/UserInputHandler.cs" Line="37" Column="27" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="MSO2">
+          <Node name="MSO2" expanded="True">
             <Node name="MSO2">
-              <Node name="Spel.cs" selected="True" />
+              <Node name="SpelUitvoeren.cs" selected="True" />
             </Node>
             <Node name="TestMankala" expanded="True">
               <Node name="Dependencies" expanded="True" />
@@ -24,17 +26,15 @@
           </Node>
         </State>
       </Pad>
-      <Pad Id="MonoDevelop.UnitTesting.TestPad">
-        <State name="__root__">
-          <Node name="MSO2" expanded="True" selected="True" />
-        </State>
-      </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/leila/Documents/GitHub/MSO-Mankala/MSO2/MankalaSpel.cs" relfile="MSO2/MankalaSpel.cs" line="188" column="1" />
+      <Breakpoint file="/Users/leila/Documents/GitHub/MSO-Mankala/MSO2/MankalaSpel.cs" relfile="MSO2/MankalaSpel.cs" line="42" column="1" />
+      <Breakpoint file="/Users/leila/Documents/GitHub/MSO-Mankala/MSO2/SpelUitvoeren.cs" relfile="MSO2/SpelUitvoeren.cs" line="20" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.MankalaTest FirstBuild="True" />
 </Properties>

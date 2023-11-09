@@ -11,7 +11,7 @@ namespace MSO2
         public static readonly object _instanceLock = new object();
         ConsoleKeyInfo keyInfo;
 
-        public int gekozenKuiltje = -1; //begin met een invalid getal
+        private int gekozenKuiltje = -1; //begin met een invalid getal
 
         public int GekozenKuiltje
         {
@@ -36,7 +36,6 @@ namespace MSO2
 
         public void IfKeyPressed()
         {
-            Console.WriteLine("Kies een kuiltje: ..");
             keyInfo = Console.ReadKey();
             HandleUserInput();
         }
@@ -48,35 +47,34 @@ namespace MSO2
             {
                 gekozenKuiltje = 1;
             }
-            if (keyInfo.Key == ConsoleKey.D2 || keyInfo.Key == ConsoleKey.D2)
+            else if (keyInfo.Key == ConsoleKey.D2 || keyInfo.Key == ConsoleKey.D2)
             {
                 gekozenKuiltje = 2;
             }
-            if (keyInfo.Key == ConsoleKey.NumPad3 || keyInfo.Key == ConsoleKey.D3)
+            else if (keyInfo.Key == ConsoleKey.NumPad3 || keyInfo.Key == ConsoleKey.D3)
             {
                 gekozenKuiltje = 3;
             }
-            if (keyInfo.Key == ConsoleKey.NumPad4 || keyInfo.Key == ConsoleKey.D4)
+            else if (keyInfo.Key == ConsoleKey.NumPad4 || keyInfo.Key == ConsoleKey.D4)
             {
                 gekozenKuiltje = 4;
             }
-            if (keyInfo.Key == ConsoleKey.NumPad5 || keyInfo.Key == ConsoleKey.D5)
+            else if (keyInfo.Key == ConsoleKey.NumPad5 || keyInfo.Key == ConsoleKey.D5)
             {
                 gekozenKuiltje = 5;
             }
-            if (keyInfo.Key == ConsoleKey.NumPad6 || keyInfo.Key == ConsoleKey.D6)
+            else if (keyInfo.Key == ConsoleKey.NumPad6 || keyInfo.Key == ConsoleKey.D6)
             {
                 gekozenKuiltje = 6;
-            } else
-            {
-                Console.WriteLine("\n");
             }
-
+            else
+            {
+                gekozenKuiltje = -1;
+            }
         }
 
         public int ChooseGame()
         {
-
             keyInfo = Console.ReadKey();
 
             if (keyInfo.Key == ConsoleKey.A)
@@ -86,6 +84,10 @@ namespace MSO2
             else if (keyInfo.Key == ConsoleKey.B)
             {
                 return 2;
+            }
+            else if (keyInfo.Key == ConsoleKey.C)
+            {
+                return 3;
             }
             else return 0;
         }

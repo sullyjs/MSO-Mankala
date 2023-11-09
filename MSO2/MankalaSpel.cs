@@ -2,31 +2,23 @@ using System;
 namespace MSO2
 {
     public class MankalaSpel : Spel
-    {
-
-        MankalaBord bord = new MankalaBord();
-        private int HuidigeSpeler;
+    {       
         private Kuiltje[] huidigeKant;
         bool NogEenZetWordtGedaan;
 
         public MankalaSpel()
         {
-            HuidigeSpeler = 1;
+            bord = new MankalaBord();
             NogEenZetWordtGedaan = false;
             huidigeKant = bord.kuiltjesSpeler1;
-            bord = new MankalaBord();
-        }
-
-        public override void Speel()
-        {
-            Zet();
-            Console.WriteLine("Het is speler" + HuidigeSpeler + " beurt.");
+            ui = new ConsoleUI(this);
         }
 
         public override void Strooien()
         {
             Kuiltje[] huidigeKuiltje = bord.kuiltjesSpeler1;
 
+            //determine welk kuiltje we gebruiken voor t strooien
             if (NogEenZetWordtGedaan)
             {
                 huidigeKuiltje = huidigeKant;
@@ -35,21 +27,21 @@ namespace MSO2
             {
                 if (HuidigeSpeler == 1)
                 {
-                    Console.WriteLine("\nGekozen kuiltje:" + gekozenKuiltje);
+                    ui.GekozenKuiltje();
                 }
                 else if (HuidigeSpeler == 2)
                 {
-                    Console.WriteLine("\nGekozen kuiltje:" + (gekozenKuiltje + 7));
+                    ui.GekozenKuiltje();
                     huidigeKuiltje = bord.kuiltjesSpeler2;
                 }
             }
 
-            if (gekozenKuiltje < 1 || gekozenKuiltje > 6 || gekozenKuiltje == 7 || huidigeKuiltje[gekozenKuiltje - 1].CheckLeeg())
+            if (!CheckValideZet(huidigeKuiltje))
             {
-                Console.WriteLine("Ongeldige keuze. Beurt gaat naar de volgende."); //denk aan een betere oplossing!!
                 return;
             }
 
+            //pak de stenen op
             int stenenInHand = huidigeKuiltje[gekozenKuiltje - 1].NeemStenen();
             int kuiltjes = gekozenKuiltje;
 
@@ -57,7 +49,7 @@ namespace MSO2
             {
                 kuiltjes++; //cirkel door de kuiltjes, elke kant 1-6
 
-                if (kuiltjes == 0 && HuidigeSpeler == 2)
+                if (kuiltjes == 0 && HuidigeSpeler == 2 && bord.IsErEenThuisKuil == true)
                 {
                     // bij thuiskuiltje player 2
                     bord.thuiskuiltjeSpeler2.VoegSteenToe();
@@ -69,7 +61,14 @@ namespace MSO2
                         // bij thuiskuiltje player 1
                         bord.thuiskuiltjeSpeler1.VoegSteenToe();
                         huidigeKuiltje = bord.kuiltjesSpeler2;
-                    } 
+                    }
+                    if (HuidigeSpeler == 2 && huidigeKant == bord.kuiltjesSpeler2)
+                    {
+                        // bij thuiskuiltje player 2
+                        bord.thuiskuiltjeSpeler2.VoegSteenToe();
+                        huidigeKuiltje = bord.kuiltjesSpeler1;
+                    }
+
 
                     //skip kuiltjes
                     if (HuidigeSpeler == 1 && huidigeKant == bord.kuiltjesSpeler2)
@@ -83,13 +82,6 @@ namespace MSO2
                         i--;
                     }
 
-                    if (HuidigeSpeler == 2 && huidigeKant == bord.kuiltjesSpeler2)
-                    {
-                        // bij thuiskuiltje player 2
-                        bord.thuiskuiltjeSpeler2.VoegSteenToe();
-                        huidigeKuiltje = bord.kuiltjesSpeler1;
-                    }
-
                     kuiltjes = 0;
                 }
                 else
@@ -101,29 +93,20 @@ namespace MSO2
 
             gekozenKuiltje = kuiltjes; //geef laatste kuiltje en kant c mee
             huidigeKant = huidigeKuiltje;
-            NogEenZetWordtGedaan = false;           
-            PrintStatus(); //status van elk kuiltje
+            NogEenZetWordtGedaan = false;
+            NotifySubscribers();    // bord wordt opnieuw getekend
         }
 
-        private void PrintStatus()
-        {
-            for (int i = 0; i < 6; i++) // Status van elke kuiltje nadat steentjes zijn gestrooid
-            {
-                Console.WriteLine($"Kuiltje {i + 1} (Speler 1): {bord.kuiltjesSpeler1[i].GetSteenAantal()}");
-            }
-            Console.WriteLine("\n");
-            for (int i = 0; i < 6; i++) // Status van elke kuiltje nadat steentjes zijn gestrooid
-            {
-                Console.WriteLine($"Kuiltje {i + 8} (Speler 2): {bord.kuiltjesSpeler2[i].GetSteenAantal()}");
-            }
-            Console.WriteLine("\nThuiskuiltje Speler 1: " + bord.thuiskuiltjeSpeler1.GetSteenAantal());
-            Console.WriteLine("Thuiskuiltje Speler 2: " + bord.thuiskuiltjeSpeler2.GetSteenAantal() + "\n");
-        }
 
         protected override void Zet()
         {
-            Console.WriteLine("\nSpeler " + HuidigeSpeler + " doet een zet.");
             Strooien();
+
+            // Als invalid move is gezet, moet er opnieuw een zet gekozen worden door de speler
+            if (gekozenKuiltje == -1)
+            {
+                return;
+            }
 
             if (gekozenKuiltje != 0) //check of t in thuiskuiltje beland
             {
@@ -133,18 +116,11 @@ namespace MSO2
                     return;
                 }
 
-                if (HuidigeSpeler == 1)
-                {
-                    HuidigeSpeler = 2;
-                }
-                else if (HuidigeSpeler == 2)
-                {
-                    HuidigeSpeler = 1;
-                }
+                WisselSpeler();
             }
             else //dan wisselen we niet van speler
             {
-                Console.WriteLine("Steentje in eigen thuiskuiltje! Speler" + HuidigeSpeler + " mag nog een zet doen.");
+                //Console.WriteLine("Steentje in eigen thuiskuiltje! Speler" + HuidigeSpeler + " mag nog een zet doen.");
                 return;
             }
         }
@@ -165,7 +141,7 @@ namespace MSO2
 
             //kuiltje is niet leeg, ga verder me de beurt
             if (!huidigkuiltje[laatsteKuiltjeIndex - 1].CheckLeeg()) {
-                Console.WriteLine("Steentje in een niet lege kuiltje! We gaan door.");
+                //Console.WriteLine("Steentje in een niet lege kuiltje! We gaan door.");
                 NogEenZetWordtGedaan = true;
                 return true;
             }         
@@ -177,7 +153,7 @@ namespace MSO2
                 int tegenoverliggendKuiltjeIndex = laatsteKuiltjeIndex + 1; //symmetriek
                 if (!tegenstanderkuiltje[tegenoverliggendKuiltjeIndex - 1].CheckLeeg())
                 {
-                    Console.WriteLine("Steentje in een leeg kuiltje, maar de tegenstander tegenover is niet leeg.");
+                    //Console.WriteLine("Steentje in een leeg kuiltje, maar de tegenstander tegenover is niet leeg.");
                     huidigThuiskuiltje.Steentjes += tegenstanderkuiltje[tegenoverliggendKuiltjeIndex - 1].GetSteenAantal(); //voeg stenen toe aan mijn thuiskuiltje
                     tegenstanderkuiltje[tegenoverliggendKuiltjeIndex - 1].Steentjes = 0; //leeg de stenen van dat kuiltje
                     return false; //niet nog een zet
@@ -187,13 +163,13 @@ namespace MSO2
             //steentje in leeg kuiltje van de tegenspeler
             if (bord.kuiltjesSpeler1[laatsteKuiltjeIndex - 1].CheckLeeg() && HuidigeSpeler == 2)
             {
-                Console.WriteLine("Steentje in een leeg kuiltje van de tegenstander.");
+                //Console.WriteLine("Steentje in een leeg kuiltje van de tegenstander.");
                 return false;
                 
             }
             if (bord.kuiltjesSpeler2[laatsteKuiltjeIndex - 1].CheckLeeg() && HuidigeSpeler == 1)
             {
-                Console.WriteLine("Steentje in een leeg kuiltje van de tegenstander.");
+                //Console.WriteLine("Steentje in een leeg kuiltje van de tegenstander.");
                 return false;
             }
 
@@ -206,23 +182,12 @@ namespace MSO2
             return bord.CheckAlleKuiltjesLeeg();
         }
 
-        internal override void DeterMineWinner()
+        /*internal override void DeterMineWinner()
         {
             int winnaar = bord.Winnaar();
 
-            if (winnaar == 0)
-            {
-                Console.WriteLine("gelijkspel");
-            }
-            else if (winnaar == 1)
-            {
-                Console.WriteLine("Speler 1 heeft gewonnen");
-            }
-            else
-            {
-                Console.WriteLine("Speler 2 heeft gewonnen");
-            }
-        }
+            ui.Winnaar(winnaar);
+        }*/
 
     }
 }

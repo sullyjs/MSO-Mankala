@@ -50,6 +50,11 @@ namespace MSO2
 		{
 			return Steentjes == 0;
 		}
+
+		public bool CheckEenSteen()
+		{
+			return Steentjes == 1;
+		}
     }
 }
 
