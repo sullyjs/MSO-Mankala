@@ -33,6 +33,7 @@ namespace MSO2
 
 
         // default winnaar is speler met leeg bord
+        // geen winconditie met thuiskuiltjes of verzamelkuiltjes, want die worden niet aangemaakt in basis Spelbord
         public virtual int Winnaar()
         {
             // 1 = speler 1
