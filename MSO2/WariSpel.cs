@@ -14,7 +14,7 @@ namespace MSO2
 
         public WariSpel()
         {
-            bord = new WariBord();
+            bord = new WariBordFactory().Spelbord;
             ui = new ConsoleUI(this);
 
             huidigeKantKuiltjes = bord.kuiltjesSpeler1;

@@ -1,7 +1,7 @@
 ﻿using System;
 namespace MSO2
 {
-    public class VariantSpel : Spel
+    public class UUSpel : Spel
     {
         private Kuiltje[] huidigeKantKuiltjes;
         private int huidigeKant;
@@ -21,9 +21,9 @@ namespace MSO2
 
 
 
-        public VariantSpel()
+        public UUSpel()
         {
-            bord = new VariantBord();
+            bord = new UUBordFactory().Spelbord;
             ui = new ConsoleUI(this);
 
             huidigeKantKuiltjes = bord.kuiltjesSpeler1;
@@ -138,20 +138,17 @@ namespace MSO2
 
         internal override bool IsGameOver()
         {
-            for (int i = 0; i < lengteSpelbord; i++)
+            bool kuiltjesSpeler1Leeg = bord.kuiltjesSpeler1.All(k => k.CheckLeeg());
+            bool kuiltjesSpeler2Leeg = bord.kuiltjesSpeler2.All(k => k.CheckLeeg());
+
+            if (kuiltjesSpeler1Leeg || kuiltjesSpeler2Leeg)
             {
-                if (!bord.kuiltjesSpeler1[i].CheckLeeg())
-                {
-                    return true;
-                }
-
-                if (!bord.kuiltjesSpeler2[i].CheckLeeg())
-                {
-                    return true;
-                }
+                return true;
             }
-
-            return true;
+            else
+            {
+                return false;
+            }
         }
 
     }

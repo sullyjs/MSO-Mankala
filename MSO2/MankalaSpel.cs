@@ -8,7 +8,7 @@ namespace MSO2
 
         public MankalaSpel()
         {
-            bord = new MankalaBord();
+            bord = new MankalaBordFactory().Spelbord;
             NogEenZetWordtGedaan = false;
             huidigeKant = bord.kuiltjesSpeler1;
             ui = new ConsoleUI(this);
@@ -49,7 +49,7 @@ namespace MSO2
             {
                 kuiltjes++; //cirkel door de kuiltjes, elke kant 1-6
 
-                if (kuiltjes == 0 && HuidigeSpeler == 2 && bord.IsErEenThuisKuil == true)
+                if (kuiltjes == 0 && HuidigeSpeler == 2)
                 {
                     // bij thuiskuiltje player 2
                     bord.thuiskuiltjeSpeler2.VoegSteenToe();

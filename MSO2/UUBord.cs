@@ -4,12 +4,12 @@ using System.Linq;
 
 namespace MSO2
 {
-	public class VariantBord : Spelbord
+	public class UUBord : Spelbord
 	{
         const int aantalKuiltjes = 5;
         const int steentjes = 5;
 
-        public VariantBord() : base(aantalKuiltjes, steentjes)
+        public UUBord(Kuiltje[] KuiltjesSpeler1, Kuiltje[] KuiltjesSpeler2) : base(KuiltjesSpeler1, KuiltjesSpeler2)
         {
         }
 

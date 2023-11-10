@@ -9,23 +9,21 @@ namespace MSO2
         public Kuiltje thuiskuiltjeSpeler2;
         public Kuiltje verzamelkuiltjeSpeler1;
         public Kuiltje verzamelkuiltjeSpeler2;
-        public bool IsErEenThuisKuil;
-  
-        public Spelbord(int aantalKuiltjesPerSpeler, int steentjesPerKuiltje, bool IsErEenThuiskuiltje = true)
+
+        public Spelbord(Kuiltje[] KuiltjesSpeler1, Kuiltje[] KuiltjesSpeler2)
         {
-            kuiltjesSpeler1 = new Kuiltje[aantalKuiltjesPerSpeler];
-            kuiltjesSpeler2 = new Kuiltje[aantalKuiltjesPerSpeler];
-            IsErEenThuisKuil = IsErEenThuiskuiltje;
+            kuiltjesSpeler1 = KuiltjesSpeler1;
+            kuiltjesSpeler2 = KuiltjesSpeler2;
 
             //create all the other thuiskuiltjes
-            for (int i = 0; i < aantalKuiltjesPerSpeler; i++)
+            /*for (int i = 0; i < aantalKuiltjesPerSpeler; i++)
             {
                 Kuiltje k1 = new Kuiltje(steentjesPerKuiltje);
                 Kuiltje k2 = new Kuiltje(steentjesPerKuiltje);
 
                 kuiltjesSpeler1[i] = k1;
                 kuiltjesSpeler2[i] = k2;
-            }
+            }*/
         }
 
         public bool CheckAlleKuiltjesLeeg()

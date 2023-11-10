@@ -41,7 +41,7 @@ namespace MSO2
             }
             else if (variantSpel == 3)
             {
-                spelLogica.spel = new VariantSpel();
+                spelLogica.spel = new UUSpel();
                 uiSpelOpzetten.VariantSpelKiezen(3);
                 spelLogica.gameActive = true;
             }

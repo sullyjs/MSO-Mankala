@@ -7,7 +7,7 @@ namespace MSO2
         const int aantalKuiltjes = 6;
         const int steentjes = 4;
 
-        public WariBord() : base(aantalKuiltjes, steentjes, false)
+        public WariBord(Kuiltje[] KuiltjesSpeler1, Kuiltje[] KuiltjesSpeler2) : base(KuiltjesSpeler1, KuiltjesSpeler2)//: base(aantalKuiltjes, steentjes)
         {
             verzamelkuiltjeSpeler1 = new Kuiltje(0);
             verzamelkuiltjeSpeler2 = new Kuiltje(0);
