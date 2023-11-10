@@ -1,9 +1,9 @@
 ﻿using System;
 namespace MSO2
 {
-	abstract class SpelbordFactory
+	public abstract class SpelbordFactory
 	{
-        public Spelbord Spelbord { get; private set; }
+        public Spelbord Spelbord { get; protected set; }
 
         public SpelbordFactory(int aantalKuiltjes, int steentjesPerKuiltje)
         {

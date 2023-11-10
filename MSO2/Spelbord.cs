@@ -43,6 +43,10 @@ namespace MSO2
             bool kuiltjesSpeler1Leeg = kuiltjesSpeler1.All(k => k.CheckLeeg());
             bool kuiltjesSpeler2Leeg = kuiltjesSpeler2.All(k => k.CheckLeeg());
 
+            if (kuiltjesSpeler1Leeg && kuiltjesSpeler2Leeg)
+            {
+                return 0;
+            }
             if (kuiltjesSpeler1Leeg)
             {
                 return 1;

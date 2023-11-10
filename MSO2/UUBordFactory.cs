@@ -1,12 +1,15 @@
 ﻿using System;
 namespace MSO2
 {
-	class UUBordFactory : SpelbordFactory
+	public class UUBordFactory : SpelbordFactory
 	{
         const int aantalKuiltjes = 5;
         const int steentjesPerKuiltje = 5;
 
-        public UUBordFactory() : base(aantalKuiltjes, steentjesPerKuiltje) { }
+        public UUBordFactory() : base(aantalKuiltjes, steentjesPerKuiltje)
+        {
+            Spelbord = SpelbordMaken(aantalKuiltjes, steentjesPerKuiltje);
+        }
 
         public override Spelbord SpelbordMaken(int aantalKuiltjes = 5, int steentjesPerKuiltje = 5)
         {

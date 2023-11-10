@@ -1,18 +1,20 @@
 ﻿using System;
 namespace MSO2
 {
-	class MankalaBordFactory : SpelbordFactory
+	public class MankalaBordFactory : SpelbordFactory
 	{
         const int aantalKuiltjes = 6;
         const int steentjesPerKuiltje = 4;
 
-        int aantalStenenThuiskuiltje1 = 0;
-        int aantalStenenThuiskuiltje2 = 0;
+        int aantalStenenThuiskuiltje1;
+        int aantalStenenThuiskuiltje2;
 
-        public MankalaBordFactory(int stenenThuiskuiltje1 = 0, int stenenThuiskuiltje2 = 0) : base (aantalKuiltjes, steentjesPerKuiltje)
+        public MankalaBordFactory(int stenenThuiskuiltje1 = 0, int stenenThuiskuiltje2 = 0) : base(aantalKuiltjes, steentjesPerKuiltje)
         {
             aantalStenenThuiskuiltje1 = stenenThuiskuiltje1;
             aantalStenenThuiskuiltje2 = stenenThuiskuiltje2;
+
+            Spelbord = SpelbordMaken(aantalKuiltjes, steentjesPerKuiltje);
         }
 
         public override Spelbord SpelbordMaken(int aantalKuiltjes, int steentjesPerKuiltje)
