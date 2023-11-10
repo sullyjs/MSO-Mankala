@@ -14,16 +14,6 @@ namespace MSO2
         {
             kuiltjesSpeler1 = KuiltjesSpeler1;
             kuiltjesSpeler2 = KuiltjesSpeler2;
-
-            //create all the other thuiskuiltjes
-            /*for (int i = 0; i < aantalKuiltjesPerSpeler; i++)
-            {
-                Kuiltje k1 = new Kuiltje(steentjesPerKuiltje);
-                Kuiltje k2 = new Kuiltje(steentjesPerKuiltje);
-
-                kuiltjesSpeler1[i] = k1;
-                kuiltjesSpeler2[i] = k2;
-            }*/
         }
 
         public bool CheckAlleKuiltjesLeeg()
@@ -41,15 +31,22 @@ namespace MSO2
             return true;
         }
 
-        public virtual int Winnaar() //on default the one of classic mankala
-        {
-            // 1 is speler 1, 2 is speler 2, 0 is gelijkspel
 
-            if (thuiskuiltjeSpeler1.Steentjes > thuiskuiltjeSpeler2.Steentjes)
+        // default winnaar is speler met leeg bord
+        public virtual int Winnaar()
+        {
+            // 1 = speler 1
+            // 2 = speler 2
+            // 0 = gelijkspel of nog geen winnaar
+
+            bool kuiltjesSpeler1Leeg = kuiltjesSpeler1.All(k => k.CheckLeeg());
+            bool kuiltjesSpeler2Leeg = kuiltjesSpeler2.All(k => k.CheckLeeg());
+
+            if (kuiltjesSpeler1Leeg)
             {
                 return 1;
             }
-            else if (thuiskuiltjeSpeler1.Steentjes < thuiskuiltjeSpeler2.Steentjes)
+            else if (kuiltjesSpeler2Leeg)
             {
                 return 2;
             }
@@ -58,7 +55,5 @@ namespace MSO2
                 return 0;
             }
         }
-
-
     }
 }
