@@ -3,14 +3,10 @@ namespace MSO2
 {
     public class WariBord : Spelbord
     {
-
-        const int aantalKuiltjes = 6;
-        const int steentjes = 4;
-
-        public WariBord(Kuiltje[] KuiltjesSpeler1, Kuiltje[] KuiltjesSpeler2) : base(KuiltjesSpeler1, KuiltjesSpeler2)//: base(aantalKuiltjes, steentjes)
+        public WariBord(Kuiltje[] KuiltjesSpeler1, Kuiltje[] KuiltjesSpeler2, int stenenverzamelkuiltje1 = 0, int stenenverzamelkuiltje2 = 0) : base(KuiltjesSpeler1, KuiltjesSpeler2)//: base(aantalKuiltjes, steentjes)
         {
-            verzamelkuiltjeSpeler1 = new Kuiltje(0);
-            verzamelkuiltjeSpeler2 = new Kuiltje(0);
+            verzamelkuiltjeSpeler1 = new Kuiltje(stenenverzamelkuiltje1);
+            verzamelkuiltjeSpeler2 = new Kuiltje(stenenverzamelkuiltje2);
         }
 
         public override int Winnaar()
