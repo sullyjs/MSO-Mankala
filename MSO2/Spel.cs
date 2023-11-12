@@ -7,7 +7,7 @@ namespace MSO2
         public int HuidigeSpeler;
         public Spelbord bord;
         protected UserInterface ui;
-        protected List<UserInterface> subscribers = new();
+        public List<UserInterface> subscribers = new();
 
         private Kuiltje[] huidigeKantKuiltjes;
         private int huidigeKant;
@@ -19,7 +19,7 @@ namespace MSO2
             HuidigeSpeler = 1;
         }
 
-        internal virtual void WisselSpeler()
+        public virtual void WisselSpeler()
         {
             if (HuidigeSpeler == 1)
                 {

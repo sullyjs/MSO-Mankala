@@ -26,15 +26,15 @@ namespace TestMankala
         public void IfKeyPressed_GekozenKuiltje()
         {
             ConsoleKeyInfo keyInfo = new ConsoleKeyInfo('1', ConsoleKey.D1, false, false, false);
-            inputHandler.IfKeyPressed(keyInfo);
+            inputHandler.HandleUserInput();
             Assert.Equal(1, inputHandler.GekozenKuiltje);
         }
 
         [Fact]
-        public void ChooseGame_TESTA()
+        public void ChooseGame_TEST()
         {
             ConsoleKeyInfo keyInfo = new ConsoleKeyInfo('A', ConsoleKey.A, false, false, false);
-            int result = inputHandler.ChooseGame(keyInfo);
+            int result = inputHandler.ChooseGame();
             Assert.Equal(1, result);
         }
 

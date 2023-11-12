@@ -4,23 +4,19 @@ namespace TestMankala;
 
 public class TestSpelOpzetten
 {
-    // SpelUitvoeren spelLogica; - fix reachable
     UserInputHandler inputHandler = UserInputHandler.GetInstance();
     UserInterface ui;
     UserInterface uiSpelOpzetten;
     //Check CheckAlleKuiltjesLeeg() methode
 
-
+    SpelOpzetten spel;
     //fix protection level
 
     public TestSpelOpzetten(){
 
         //arrange
-        SpelOpzetten Spel = new SpelOpzetten();
-        int resultaat = Spel.VariantSpelKiezen();
+        spel = new SpelOpzetten();
     }
-
-    //for this to work, use this in SpelOpzetten.cs
 
     //public int VariantSpelKiezen()
     //{
@@ -28,28 +24,6 @@ public class TestSpelOpzetten
 
     //return variantSpel;
     //}
-
-    //voor alles protectionlevel fixen
-    [Fact]
-    public void Variantspelkiezen1()
-    {
-        Assert.Equal(1, resultaat);
-    }
-
-    [Fact]
-    public void Variantspelkiezen2()
-    {
-        Assert.Equal(2, resultaat);
-    }
-
-
-    //Check Winnaar() methode
-
-    [Fact]
-    public void Variantspelkiezen3() { 
-
-        Assert.Equal(3, resultaat);
-    }
 
     [Fact]
     public void Constructor_Correct()
@@ -62,8 +36,8 @@ public class TestSpelOpzetten
     //as is, use this -- make methods for each variant
     public void VariantSpelKiezen1_ChooseMankalaSpel()
     {
-        // Act
-        Spel.VariantSpelKiezen(1);
+        // Act - click 1 to test, other numbers to test other outputs
+        spel.VariantSpelKiezen();
 
         // Assert
         Assert.IsType<MankalaSpel>(spel.spelLogica.spel);

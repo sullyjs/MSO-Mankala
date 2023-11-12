@@ -3,9 +3,9 @@ namespace MSO2
 {
 	public class SpelOpzetten
 	{
-        SpelUitvoeren spelLogica;
-        UserInputHandler inputHandler = UserInputHandler.GetInstance();
-        UserInterface ui;
+        public SpelUitvoeren spelLogica;
+        public UserInputHandler inputHandler = UserInputHandler.GetInstance();
+        public UserInterface ui;
         UserInterface uiSpelOpzetten;   // is nodig om functies uit UserInterface te kunnen gebruiken die geen gebruik maken van het bord
 
         public SpelOpzetten()
@@ -21,7 +21,7 @@ namespace MSO2
             ui.OverviewBordTekenen();
 		}
 
-		void VariantSpelKiezen()
+		public void VariantSpelKiezen()
 		{
             uiSpelOpzetten.VariantKeuzeMenu();
 

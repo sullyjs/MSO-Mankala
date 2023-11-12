@@ -1,12 +1,12 @@
 ﻿using System;
 namespace MSO2
 {
-    class SpelUitvoeren
+    public class SpelUitvoeren
     {
 
         public Spel spel;
         UserInputHandler inputHandler = UserInputHandler.GetInstance();
-        internal bool gameActive;
+        public bool gameActive;
         private UserInterface ui;
 
         public SpelUitvoeren()
