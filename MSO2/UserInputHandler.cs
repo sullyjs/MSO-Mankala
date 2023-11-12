@@ -9,7 +9,7 @@ namespace MSO2
     {
         public static UserInputHandler _instance;
         public static readonly object _instanceLock = new object();
-        ConsoleKeyInfo keyInfo;
+        public ConsoleKeyInfo keyInfo;
 
         private int gekozenKuiltje = -1; //begin met een invalid getal
 

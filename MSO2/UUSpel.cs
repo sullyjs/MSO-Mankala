@@ -88,7 +88,7 @@ namespace MSO2
             }
         }
 
-        internal override void WisselSpeler()
+        public override void WisselSpeler()
         {
             if (HuidigeSpeler == 1)
             {

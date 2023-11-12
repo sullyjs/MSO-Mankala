@@ -34,15 +34,15 @@ public class TestSpelOpzetten
 
 
     //as is, use this -- make methods for each variant
-    public void VariantSpelKiezen1_ChooseMankalaSpel()
-    {
+    //public void VariantSpelKiezen1_ChooseMankalaSpel()
+   // {
         // Act - click 1 to test, other numbers to test other outputs
-        spel.VariantSpelKiezen();
+       // spel.VariantSpelKiezen();
 
         // Assert
-        Assert.IsType<MankalaSpel>(spel.spelLogica.spel);
-        Assert.True(spel.spelLogica.gameActive);
-    }
+       // Assert.IsType<MankalaSpel>(spel.spelLogica.spel);
+       // Assert.True(spel.spelLogica.gameActive);
+    //}
 
     //test main game
     [Fact]

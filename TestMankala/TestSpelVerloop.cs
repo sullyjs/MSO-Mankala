@@ -59,7 +59,15 @@ namespace TestMankala
 
         public MockUserInterface(Spel huidgeSpel) : base(huidgeSpel) { }
     
-        public bool UpdateCalled { get; private set; } = false;
+        public bool UpdateCalled { get; private set; } = false; 
+        public bool ZetCalled { get; private set; } = false;
+        public bool HuidigeSpelerCalled { get; private set; } = false;
+        public bool StrooienCalled { get; private set; } = false;
+
+
+
+
+
         // voor het tekenen van een overview van het bord aan het begin van het spel voor de spelers
         public override void OverviewBordTekenen()
         {
