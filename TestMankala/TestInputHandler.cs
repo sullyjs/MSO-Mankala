@@ -18,7 +18,9 @@ namespace TestMankala
         [Fact]
         public void GekozenKuiltjeDefaultValueIsMinusOne()
         {
-            int gekozenKuiltje = inputHandler.GekozenKuiltje;
+            UserInputHandler inputHandler2 = UserInputHandler.GetInstance();
+            inputHandler2.gekozenKuiltje = inputHandler.defaultGetal;
+            int gekozenKuiltje = inputHandler2.gekozenKuiltje;
             Assert.Equal(-1, gekozenKuiltje);
         }
 
@@ -30,13 +32,16 @@ namespace TestMankala
 
             // Assert
             Assert.Equal(1, inputHandler.GekozenKuiltje);
+            inputHandler.gekozenKuiltje = inputHandler.defaultGetal;
         }
 
         [Fact]
-        public void ChooseGame_TEST()
+        public void ChooseGame_TEST1()
         {
-            inputHandler.keyInfo = new ConsoleKeyInfo('A', ConsoleKey.A, false, false, false);
-            int result = inputHandler.ChooseGame();
+            UserInputHandler inputHandler3 = UserInputHandler.GetInstance();
+            var input = new StringReader("A");
+            Console.SetIn(input);
+            int result = inputHandler3.ChooseGame();
             Assert.Equal(1, result);
         }
 
